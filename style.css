@@ -1,0 +1,174 @@
+* {
+    border-style: none;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* formulaire contacts */
+
+h1,
+h2 {
+    color: white;
+    background-color: #0880D6;
+    padding: 15px;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+
+}
+
+h2 {
+    text-align: center;
+}
+
+.contenaire {
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: 40% 60%;
+    margin-inline: 70px;
+    margin-top: 15px;
+    margin-bottom: 70px;
+}
+
+.contenaire--formulaire,
+.contenaire--liste {
+    border: 1px #C4C4C4 solid;
+
+}
+
+.contenaire--formulaire--marges {
+    padding: 18px;
+
+}
+
+h3 {
+    color: #0880D6;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    line-height: 3;
+}
+
+.contenaire--formulaire--marges input {
+    color: black;
+    width: 100%;
+    height: 45px;
+    border: 1px #C4C4C4 solid;
+}
+
+#inputBio_height {
+    height: 115px;
+
+
+}
+
+#inputImg_height {
+    border: 1px #C4C4C4 dashed;
+    height: 115px;
+    margin-block: 15px;
+    text-align: center;
+    color: #555555;
+    font-size: 16px;
+    font-weight: 500;
+
+}
+
+button {
+    height: 44px;
+    width: 135px;
+    padding: 10px 45px 10px 45px;
+    color: #fff;
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 30px;
+}
+
+#button_color--blue {
+    background-color: #0880D6;
+}
+
+#button_color--red {
+    background-color: #FF3838;
+    margin-left: 30px;
+}
+
+/* liste de contacts */
+
+.contenaire--liste {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    padding: 15px;
+    grid-gap: 20px;
+}
+
+#size_img img {
+    width: 162px;
+    height: 162px;
+    border-radius: 162px;
+}
+
+#contenaire--liste--id {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 34px;
+    color: #555555;
+    line-height: 4;
+    display: flex;
+    justify-content: space-between;
+}
+
+#icon {
+    display: flex;
+}
+
+#icon div {
+  
+    padding-right: 20px;
+}
+
+#contenaire--liste--num {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    color: #555555;
+    line-height: 3;
+}
+
+#contenaire--liste--bio {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+    color: #555555;
+    line-height: 1.5;
+    padding-right: 15px;
+    text-align: justify;
+}
+
+/* responsive */
+
+@media screen and (max-width: 1400px) and (min-width:390px) {
+    .contenaire {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .contenaire--formulaire,
+    .contenaire--liste {
+        width: 100%;
+
+    }
+
+    .contenaire--liste {
+        display: flex;
+        justify-content: space-between;
+
+    }
+
+    #size_img {
+        padding-right: 50px;
+    }
+}
