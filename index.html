@@ -10,41 +10,45 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz@6..96&family=Mea+Culpa&family=Poppins&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <h1>Répertoire des contacts</h1>
     <section class="contenaire">
         <div class="contenaire--formulaire">
-
             <h2>Formulaire de contact</h2>
-            <div class="contenaire--formulaire--marges">
-                <h3>Prénom <br>
-                    <input type="text">
-                </h3>
-                <h3>Nom <br>
-                    <input type="text">
-                </h3>
-                <h3>Télephone <br>
-                    <input type="text">
-                </h3>
-                <h3>Groupe <br>
-                    <input type="text">
-                </h3>
-                <h3>Email <br>
-                    <input type="email">
-                </h3>
-                <h3>Bio <br>
-                    <input type="text" id="inputBio_height">
-                </h3>
-                <div>
-                    <input type="url" placeholder="Déposer le photo ici" id="inputImg_height">
+            <form class="contenaire--formulaire--marges" name="contact">
+                <label>Prénom </label>
+                <input type="text">
+
+                <label>Nom </label>
+                <input type="text">
+
+                <label>Télephone </label>
+                <div id="phone--cont">
+
+                    <input id="phone" type="tel" name="phone" />
                 </div>
-                <button type="submit" id="button_color--blue">Créer</button>
-                <button type="submit" id="button_color--red">Rénit</button>
-            </div>
+                <label>Groupe </label>
+                <input type="text">
+
+                <label>Email </label>
+                <input type="email">
+
+                <label>Bio </label>
+                <input type="textarea" id="inputBio_height">
+                <div id="inputImg_height">
+                    <input type="file" id="image" accept=".jpg, .png"/>
+                    <label for="image"> Déposer le photo <br> ici</label>
+                  
+                </div>
+                <input id="button_color--blue" type="submit" value="Créer" onclick="document.forms.contact.submit()" />
+                <input id="button_color--red" type="reset" value="Rénit" onclick="document.forms.contact.submit()" />
+            </form>
         </div>
         <div>
             <h2>Liste de contacts</h2>
@@ -52,7 +56,7 @@
                 <div id="size_img"><img src="1690367672938.jpeg" alt=""></div>
                 <div>
 
-                    <div id="contenaire--liste--id">Prénom Nom - Groupe 
+                    <div id="contenaire--liste--id">Prénom Nom - Groupe
                         <div id="icon">
                             <div id="edit_btn"> <img src="icon/Vector.png" alt=""></div>
                             <div id="delet_btn"> <img src="icon/VectorSupp.png" alt=""></div>
