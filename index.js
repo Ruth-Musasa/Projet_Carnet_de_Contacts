@@ -9,10 +9,10 @@ const info = document.querySelector(".alert-info");
 function process(event) {
     event.preventDefault();
 
-    const phoneNumber = phoneInput.getNumber();
+    const phoneNumber = 1*phoneInput.getNumber();
     alert(phoneNumber)
     alert(typeof phoneNumber)
-    if (typeof phoneNumber == "number" || phoneNumber.length == 10) {
+    if (typeof phoneNumber == "number" || phoneNumber.length == 13) {
         if ((phoneNumber[3] == 9 || phoneNumber[3] == 9) && (phoneNumber[4] == 2 || phoneNumber[4] == 4 || phoneNumber[4] == 7 || phoneNumber[4] == 8 || phoneNumber[4] == 9)) {
             info.style.display = "";
             alert(typeof phoneNumber)
@@ -25,6 +25,33 @@ function process(event) {
 
     }
 }
+
+//Section Email Checking
+
+var email = document.querySelector('#email_checking');
+
+
+email.addEventListener('change', checking);
+
+function checking(event) {
+
+    event.preventDefault();
+
+    emailRegExp = new RegExp('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g');
+
+    let testEmail = emailRegExp.test(email.value);
+    let erreur = email.nextElementSibling;
+
+    if (testEmail) {
+        erreur.innerHTML = "";
+    } else {
+        erreur.innerHTML = 'Veuillez saisir une adresse E-mail correcte'
+        email.classList.add("erreur")
+    }
+}
+
+
+//Section image checking
 
 
 
