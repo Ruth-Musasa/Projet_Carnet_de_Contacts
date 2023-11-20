@@ -115,7 +115,12 @@ label {
     width: 162px;
     height: 162px;
     border-radius: 162px;
+    
 }
+
+/* #image {
+    display: none;
+} */
 
 #contenaire--liste--id {
     font-size: 16px;
@@ -173,16 +178,16 @@ label {
         justify-content: space-between;
 
     }
+
     #contenaire--liste--id {
         display: flex;
         justify-content: space-between;
     }
+
     #size_img {
         padding-right: 50px;
     }
 
-   
-    
 }
 
 @media screen and (max-width:690px) {
@@ -199,13 +204,14 @@ label {
     }
 
     .contenaire--liste {
-       display: flex;
-       flex-wrap: wrap;
+        display: flex;
+        flex-wrap: wrap;
     }
+
     #contenaire--liste--bio {
-        
+
         padding-right: 0px;
         text-align: justify;
     }
- 
+
 }
