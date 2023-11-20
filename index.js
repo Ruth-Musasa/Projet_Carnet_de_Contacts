@@ -1,19 +1,9 @@
-<<<<<<< HEAD
-// section image a ne pas supprimer!!
-var img = document.getElementById("image")
-// img.style.opacity = 0;
-img.addEventListener('',img_validation);
-=======
 // gitsection image a ne pas supprimer!!
 const img = document.getElementById("image")
 img.style.opacity = 0;
->>>>>>> ca1f1fb38484fe7e5b546ac944165d050c4d4414
 
+// section telephone
 
-<<<<<<< HEAD
-
-=======
->>>>>>> ca1f1fb38484fe7e5b546ac944165d050c4d4414
 
 //Section Email Checking
 
@@ -31,22 +21,15 @@ function checking(event) {
     let testEmail = emailRegExp.test(email.value);
     let erreur = email.nextElementSibling;
 
-    if (email.value.trim()==""){
-        erreur.innerHTML = 'Le champ email est requis'
-        email.classList.add("erreur") 
-    }
-
-   else if (testEmail) {
+    if (testEmail) {
         erreur.innerHTML = "";
     } else {
         erreur.innerHTML = 'Veuillez saisir une adresse E-mail correcte'
-        email.classList.add("erreur")        
+        email.classList.add("erreur")
     }
 }
 
 
-<<<<<<< HEAD
-=======
 //Section prénom checking
 let prénom = document.querySelector("#nameInpute");
 prénom.addEventListener('change', validateForm)
@@ -75,7 +58,6 @@ function validateForm(event) {
 }
 
 //Section nom checking
->>>>>>> ca1f1fb38484fe7e5b546ac944165d050c4d4414
 
 
 let nom = document.querySelector("#nom");
