@@ -20,8 +20,10 @@ function checking(event) {
 
     let testEmail = emailRegExp.test(email.value);
     let erreur = email.nextElementSibling;
-
-    if (testEmail) {
+    if (email.value.trim()==""){
+        erreur.innerHTML = 'Le champ Email est requis'
+    }
+    else if(testEmail) {
         erreur.innerHTML = "";
     } else {
         erreur.innerHTML = 'Veuillez saisir une adresse E-mail correcte'
