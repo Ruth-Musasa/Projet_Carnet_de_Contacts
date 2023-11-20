@@ -26,5 +26,32 @@ img.style.opacity = 0;
 //     }
 // }
 
+//Section Email Checking
+
+var email = document.querySelector('#email_checking');
+
+
+email.addEventListener('change', checking);
+
+function checking(event) {
+
+    event.preventDefault();
+
+    emailRegExp = new RegExp('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g');
+
+    let testEmail = emailRegExp.test(email.value);
+    let erreur = email.nextElementSibling;
+
+    if (testEmail) {
+        erreur.innerHTML = "";
+    } else {
+        erreur.innerHTML = 'Veuillez saisir une adresse E-mail correcte'
+        email.classList.add("erreur")
+    }
+}
+
+
+//Section image checking
+
 
 

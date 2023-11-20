@@ -153,6 +153,14 @@ label {
     padding-right: 15px;
     text-align: justify;
 }
+/*message d'erreur email*/
+.error_message{
+    color: red;
+    font-style: italic;
+}
+.erreur{
+    border: 1px red solid;
+}
 
 /* responsive */
 
