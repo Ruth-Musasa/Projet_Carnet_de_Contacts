@@ -1,11 +1,13 @@
-// section image a ne pas supprimer!!
+// gitsection image a ne pas supprimer!!
 const img = document.getElementById("image")
 img.style.opacity = 0;
+
+// section telephone
 
 
 //Section Email Checking
 
-var email = document.querySelector('#email_checking');
+let email = document.querySelector('#email_checking');
 
 
 email.addEventListener('change', checking);
@@ -28,27 +30,63 @@ function checking(event) {
 }
 
 
+//Section prénom checking
+let prénom = document.querySelector("#nameInpute");
+prénom.addEventListener('change', validateForm)
 
+function validateForm(event) {
 
-// section telephone
-
-const info = document.querySelector("#phone");
-info.addEventListener('change', process);
-function process(event) {
     event.preventDefault();
+    nameRegExp = new RegExp('^[a-zA-Z]', 'g');
 
-    phoneRegExp = new RegExp('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g');
+    let testname = nameRegExp.test(prénom.value);
+    let erreur = prénom.nextElementSibling;
+ 
 
-    let testPhone = phoneRegExp.test(info.value);
-    let erreur = info.nextElementSibling;
-
-    if (testPhone) {
+  if (prénom.value.length < 3) {
+    erreur.innerHTML = 'Veuillez saisir un nom valide supérieur a 3 caractere'
+    prénom.classList.add("erreur")
+} 
+  else if (prénom.value.length > 50) {
+        erreur.innerHTML = 'Veuillez saisir un nom valide inférieur a 50 caractere'
+        prénom.classList.add("erreur")  
+    } 
+    
+    else if (testname) {
         erreur.innerHTML = "";
-    } else {
-        erreur.innerHTML = 'Veuillez saisir un numero correcte'
-        info.classList.add("erreur")
     }
 }
 
+//Section nom checking
 
+
+let nom = document.querySelector("#nom");
+nom.addEventListener('change', validateName)
+
+function validateName(event) {
+
+    event.preventDefault();
+    nameRegExp = new RegExp('^[a-zA-Z]', 'g');
+
+    let testname = nameRegExp.test(nom.value);
+    let erreur = nom.nextElementSibling;
+
+
+  if (nom.value.length < 3) {
+    erreur.innerHTML = 'Veuillez saisir un nom valide supérieur a 3 caractere'
+    nom.classList.add("erreur")
+    
+} 
+  else if (nom.value.length > 50) {
+        erreur.innerHTML = 'Veuillez saisir un nom valide inférieur a 50 caractere'
+        nom.classList.add("errur")
+          
+    } 
+    
+    else if (testname) {
+        erreur.innerHTML = "";
+    
+    }
+
+}
 

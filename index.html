@@ -21,18 +21,25 @@
     <section class="contenaire">
         <div class="contenaire--formulaire">
             <h2>Formulaire de contact</h2>
-            <form class="contenaire--formulaire--marges" name="contact">
+            <form class="contenaire--formulaire--marges" name="contact" onsubmit="event.preventDefault(); validateForm()">
                 <label>Prénom </label>
-                <input type="text">
+                <div id="name">
+                <input type="text" id="nameInpute">
+                <p class="error_message"></p>
+                </div>
 
                 <label>Nom </label>
-                <input type="text">
+                <div id="name"> 
+                <input type="text" id="nom">
+                <p class="error_message"></p>
+                </div>
 
                 <label>Télephone </label>
                 <div id="phone--cont">
                     <input id="phone" type="tel" name="phone" class="erreur" />
                     <p class="error_message "></p>
                 </div>
+
                 <label>Groupe </label>
                 <input type="text">
 
@@ -41,7 +48,7 @@
                 <p class="error_message "></p>
 
                 <label>Bio </label>
-                <input type="textarea" id="inputBio_height">
+                <textarea rows="5" id="inputBio_height"></textarea>
                 <div id="inputImg_height">
                     <input type="file" id="image" accept=".jpg, .png"/>
                     <p class="error_message"></p>
