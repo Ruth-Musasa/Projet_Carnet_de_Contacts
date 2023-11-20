@@ -4,31 +4,10 @@ img.style.opacity = 0;
 
 // section telephone
 
-const info = document.querySelector(".alert-info");
-
-function process(event) {
-    event.preventDefault();
-
-    const phoneNumber = 1*phoneInput.getNumber();
-    alert(phoneNumber)
-    alert(typeof phoneNumber)
-    if (typeof phoneNumber == "number" || phoneNumber.length == 13) {
-        if ((phoneNumber[3] == 9 || phoneNumber[3] == 9) && (phoneNumber[4] == 2 || phoneNumber[4] == 4 || phoneNumber[4] == 7 || phoneNumber[4] == 8 || phoneNumber[4] == 9)) {
-            info.style.display = "";
-            alert(typeof phoneNumber)
-            info.innerHTML = `Phone number in E.164 format: <strong>${phoneNumber}</strong>`
-        }
-    }
-    else {
-        info.style.display = "";
-        info.innerHTML = `ecrivez un bon num <strong></strong>`
-
-    }
-}
 
 //Section Email Checking
 
-var email = document.querySelector('#email_checking');
+let email = document.querySelector('#email_checking');
 
 
 email.addEventListener('change', checking);
@@ -51,7 +30,63 @@ function checking(event) {
 }
 
 
-//Section image checking
+//Section prénom checking
+let prénom = document.querySelector("#nameInpute");
+prénom.addEventListener('change', validateForm)
+
+function validateForm(event) {
+
+    event.preventDefault();
+    nameRegExp = new RegExp('^[a-zA-Z]', 'g');
+
+    let testname = nameRegExp.test(prénom.value);
+    let erreur = prénom.nextElementSibling;
+ 
+
+  if (prénom.value.length < 3) {
+    erreur.innerHTML = 'Veuillez saisir un nom valide supérieur a 3 caractere'
+    prénom.classList.add("erreur")
+} 
+  else if (prénom.value.length > 50) {
+        erreur.innerHTML = 'Veuillez saisir un nom valide inférieur a 50 caractere'
+        prénom.classList.add("erreur")  
+    } 
+    
+    else if (testname) {
+        erreur.innerHTML = "";
+    }
+}
+
+//Section nom checking
 
 
+let nom = document.querySelector("#nom");
+nom.addEventListener('change', validateName)
+
+function validateName(event) {
+
+    event.preventDefault();
+    nameRegExp = new RegExp('^[a-zA-Z]', 'g');
+
+    let testname = nameRegExp.test(nom.value);
+    let erreur = nom.nextElementSibling;
+
+
+  if (nom.value.length < 3) {
+    erreur.innerHTML = 'Veuillez saisir un nom valide supérieur a 3 caractere'
+    nom.classList.add("erreur")
+    
+} 
+  else if (nom.value.length > 50) {
+        erreur.innerHTML = 'Veuillez saisir un nom valide inférieur a 50 caractere'
+        nom.classList.add("errur")
+          
+    } 
+    
+    else if (testname) {
+        erreur.innerHTML = "";
+    
+    }
+
+}
 
