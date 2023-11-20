@@ -24,24 +24,26 @@
             <form class="contenaire--formulaire--marges" name="contact">
                 <label>Prénom </label>
                 <input type="text">
+                <p class="error_message"></p>
 
                 <label>Nom </label>
                 <input type="text">
+                <p class="error_message"></p>
 
                 <label>Télephone </label>
                 <div id="phone--cont">
                     <input id="phone" type="tel" name="phone" />
-                    <p class="alert alert-info" style="display: none;"></p>
+                    <p class="error_message"></p>
                 </div>
                 <label>Groupe </label>
                 <input type="text">
-
+                <p class="error_message"></p>
                 <label>Email </label>
                 <input id="email_checking" type="email">
                 <p class="error_message"></p>
 
                 <label>Bio </label>
-                <input type="textarea" id="inputBio_height">
+               <textarea id="inputBio_height" rows="5"></textarea>
                 <div id="inputImg_height">
                     <input type="file" id="image" accept=".jpg, .png"/>
                     <p class="error_message"></p>
