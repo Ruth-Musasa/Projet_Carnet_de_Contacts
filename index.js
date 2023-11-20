@@ -1,4 +1,4 @@
-// section image a ne pas supprimer!!
+// gitsection image a ne pas supprimer!!
 const img = document.getElementById("image")
 img.style.opacity = 0;
 
