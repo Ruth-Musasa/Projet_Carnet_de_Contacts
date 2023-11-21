@@ -1,5 +1,5 @@
 
-// gitsection image a ne pas supprimer!!
+// gitsection image 
 const img1 = document.getElementById("image")
 img1.style.opacity = 0;
 
@@ -19,7 +19,7 @@ function imgchecking(event) {
     if (testimg == true) {
         erreur.innerHTML = "";
     } else {
-        erreur.innerHTML = 'Deposer une image valide (png ou jpg)'
+        erreur.innerHTML = 'Deposer une image valide(png ou jpg)'
         img.style.border = "2px solid red"
     }
 }
