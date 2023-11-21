@@ -171,12 +171,8 @@ label {
 .error_message{
     color: red;
     font-style: italic;
+    text-align: left;
 }
-.erreur{
-    border: 1px red solid;
-}
-
-
 
 /* responsive */
 

@@ -1,6 +1,6 @@
 
 
-// gitsection image a ne pas supprimer!!
+// gitsection image 
 const img1 = document.getElementById("image")
 img1.style.opacity = 0;
 
@@ -20,7 +20,7 @@ function imgchecking(event) {
     if (testimg == true) {
         erreur.innerHTML = "";
     } else {
-        erreur.innerHTML = 'Deposer une image valide (png ou jpg)'
+        erreur.innerHTML = 'Deposer une image valide(png ou jpg)'
         img.style.border = "2px solid red"
     }
 }
@@ -29,170 +29,27 @@ function imgchecking(event) {
 
 // section telephone
 
-var info = document.querySelector("#phone");
-info.addEventListener('change', process);
-function process(event) {
-    event.preventDefault();
-    phoneRegExp = new RegExp('^084|085|080|089|081|082|099|097|090'+'[0-9]{7}', 'g');
-    let testPhone = phoneRegExp.test(info.value);
-    console.log(testPhone);
-    console.log(info.value);
-    let erreur = info.nextElementSibling;
-    if (testPhone) {
+// const info = document.querySelector(".alert-info");
 
-            erreur.innerHTML = "";
-            info.style.border = "1px solid rgb(179, 177, 177)";
-    }
-    else if (info.value.length!==10) {
-            erreur.innerHTML = 'Veuillez saisir un numero correcte composée de 10 chiffres'
-            info.style.border = "2px solid red"
-        }
-    else {
-        erreur.innerHTML = 'Veuillez saisir un numero correcte'
-        info.style.border = "2px solid red"
-    }
-}
+// function process(event) {
+//     event.preventDefault();
 
-//Section Email Checking
+//     const phoneNumber = phoneInput.getNumber();
+//     alert(phoneNumber)
+//     alert(typeof phoneNumber)
+//     if (typeof phoneNumber == "number" || phoneNumber.length == 13) {
+//         if ((phoneNumber[3] == 9 || phoneNumber[3] == 9) && (phoneNumber[4] == 2 || phoneNumber[4] == 4 || phoneNumber[4] == 7 || phoneNumber[4] == 8 || phoneNumber[4] == 9)) {
+//             info.style.display = "";
+//             alert(typeof phoneNumber)
+//             info.innerHTML = `Phone number in E.164 format: <strong>${phoneNumber}</strong>`
+//         }
+//     }
+//     else {
+//         info.style.display = "";
+//         info.innerHTML = `ecrivez un bon num <strong></strong>`
 
-let email = document.querySelector('#email_checking');
-
-email.addEventListener('change', checking);
-
-function checking(event) {
-
-    event.preventDefault();
-
-    emailRegExp = new RegExp('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g');
-
-    let testEmail = emailRegExp.test(email.value);
-    let erreur = email.nextElementSibling;
-    if (email.value.trim() == "") {
-        erreur.innerHTML = 'Le champ Email est requis'
-        email.style.border = "2px solid red"
-    }
-    else if (testEmail) {
-        erreur.innerHTML = "";
-        email.style.border = "1px solid rgb(179, 177, 177)"
-    } else {
-        erreur.innerHTML = 'Veuillez saisir une adresse E-mail correcte'
-        email.style.border = "2px solid red"
-    }
-}
-
-
-//Section prénom checking
-let prénom = document.querySelector("#nameInpute");
-prénom.addEventListener('change', validateForm)
-
-function validateForm(event) {
-
-    event.preventDefault();
-    nameRegExp = new RegExp('^[a-zA-Z]', 'g');
-
-    let testname = nameRegExp.test(prénom.value);
-    let erreur = prénom.nextElementSibling;
-
-
-    if (prénom.value.length < 3) {
-        erreur.innerHTML = "Veuillez saisir un prénom valide d'au moins 3 caractères"
-        prénom.style.border = "2px solid red"
-    }
-    else if (prénom.value.length > 50) {
-        erreur.innerHTML = 'Veuillez saisir un prénom valide inférieur à 50 caractères'
-        prénom.style.border = "2px solid red"
-    }
-
-    else if (testname) {
-        erreur.innerHTML = "";
-        prénom.style.border = "1px solid rgb(179, 177, 177)"
-    }
-}
-
-//Section nom checking
-
-
-let nom = document.querySelector("#nom");
-nom.addEventListener('change', validateName)
-
-function validateName(event) {
-
-    event.preventDefault();
-    nameRegExp = new RegExp('^[a-zA-Z]', 'g');
-
-    let testname = nameRegExp.test(nom.value);
-    let erreur = nom.nextElementSibling;
-
-
-    if (nom.value.length < 3) {
-        erreur.innerHTML = "Veuillez saisir un nom valide d'au moins 3 caractères"
-        nom.style.border = "2px solid red"
-
-    }
-    else if (nom.value.length > 50) {
-        erreur.innerHTML = 'Veuillez saisir un nom valide inférieur à 50 caractères'
-        nom.style.border = "2px solid red"
-
-    }
-
-    else if (testname) {
-        erreur.innerHTML = "";
-        nom.style.border = "1px solid rgb(179, 177, 177)"
-    }
-}
-
-
-// boutton créer 
-
-// const submit = document.getElementById("button_color--blue")
-// const Rénit = document.getElementById("button_color--red")
-// const FormContenaire = document.getElementById("contenaire--formulaire--marges")
-// const ContenaireListe = document.getElementById("contenaire--liste")
-
-// submit.onclick = function() {
-//   if (FormContenaire.value === ''){
-//     erreur.innerHTML = 'Veuillez remplir le formulaire'
-//     FormContenaire.classList.add("erreur");
-//   }
-//   }
-//   else{
-//     let li = document.createElement("li");
-//     li.innerHTML = inputBox.value;
-//     listContenaire.appendChild(li);
-//     let span = document.createElement("span");
-//     span.innerHTML = "\u00d7";
-//     li.appendChild(span)
-
+//     }
 // }
-// inputBox.value = "";
-// saveData();
-// }
-
-// ContenaireListe.addEventListener("click", function(e){
-
-// if (e.target.tagName === "LI"){
-
-// e.target.classList.toggle("checked");
-// saveData();
-// }
-// else if(e.target.tagName === "SPAN"){
-// e.target.parentElement.remove();
-// saveData();
-// }
-// },false)
-
-// function saveData(){
-
-//     localStorage.setItem("data", listContenaire.innerHTML);
-// }
-
-// function showTask(){
-//     listContenaire.innerHTML = localStorage.getItem("data");
-// }
-// showTask();
-
-
-
 
 
 
