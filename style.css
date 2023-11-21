@@ -167,8 +167,10 @@ label {
     font-style: italic;
 }
 .erreur{
-    border: 1px red solid;
+    border-color: 1px red solid;
 }
+
+
 
 /* responsive */
 

@@ -90,3 +90,52 @@ function validateName(event) {
 
 }
 
+
+// boutton créer 
+
+// const submit = document.getElementById("button_color--blue")
+// const Rénit = document.getElementById("button_color--red")
+// const FormContenaire = document.getElementById("contenaire--formulaire--marges")
+// const ContenaireListe = document.getElementById("contenaire--liste")
+
+// submit.onclick = function() {
+//   if (FormContenaire.value === ''){
+//     erreur.innerHTML = 'Veuillez remplir le formulaire'
+//     FormContenaire.classList.add("erreur");
+//   }
+//   }
+//   else{
+//     let li = document.createElement("li");
+//     li.innerHTML = inputBox.value;
+//     listContenaire.appendChild(li);
+//     let span = document.createElement("span");
+//     span.innerHTML = "\u00d7";
+//     li.appendChild(span)
+
+// }
+// inputBox.value = "";
+// saveData();
+// }
+
+// ContenaireListe.addEventListener("click", function(e){
+
+// if (e.target.tagName === "LI"){
+
+// e.target.classList.toggle("checked");
+// saveData();
+// }
+// else if(e.target.tagName === "SPAN"){
+// e.target.parentElement.remove();
+// saveData();
+// }
+// },false)
+
+// function saveData(){
+
+//     localStorage.setItem("data", listContenaire.innerHTML);
+// }
+
+// function showTask(){
+//     listContenaire.innerHTML = localStorage.getItem("data");
+// }
+// showTask();
