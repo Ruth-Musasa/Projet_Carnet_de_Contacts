@@ -1,7 +1,56 @@
-// section image a ne pas supprimer!!
-const img = document.getElementById("image")
-img.style.opacity = 0;
 
+// gitsection image a ne pas supprimer!!
+const img1 = document.getElementById("image")
+img1.style.opacity = 0;
+
+let img = document.querySelector('#image');
+
+img.addEventListener('change', imgchecking);
+
+function imgchecking(event) {
+
+    event.preventDefault();
+
+    imgRegExp = new RegExp('^[a-zA-Z0-9.-_]+[.]{1}'+'jpg|png', 'g');
+    console.log(imgRegExp);
+    let testimg = imgRegExp.test(img.value);
+    let erreur = img.nextElementSibling;
+    console.log(testimg);
+    if (testimg == true) {
+        erreur.innerHTML = "";
+    } else {
+        erreur.innerHTML = 'Deposer une image valide (png ou jpg)'
+        img.style.border = "2px solid red"
+    }
+}
+
+
+
+// section telephone
+
+var info = document.querySelector("#phone");
+info.addEventListener('change', process);
+function process(event) {
+    event.preventDefault();
+    phoneRegExp = new RegExp('^084|085|080|089|081|082|099|097|090'+'[0-9]{7}', 'g');
+    let testPhone = phoneRegExp.test(info.value);
+    console.log(testPhone);
+    console.log(info.value);
+    let erreur = info.nextElementSibling;
+    if (testPhone) {
+
+            erreur.innerHTML = "";
+            info.style.border = "1px solid rgb(179, 177, 177)";
+    }
+    else if (info.value.length!==10) {
+            erreur.innerHTML = 'Veuillez saisir un numero correcte composée de 10 chiffres'
+            info.style.border = "2px solid red"
+        }
+    else {
+        erreur.innerHTML = 'Veuillez saisir un numero correcte'
+        info.style.border = "2px solid red"
+    }
+}
 
 //Section Email Checking
 
@@ -19,6 +68,7 @@ function checking(event) {
     let erreur = email.nextElementSibling;
     if (email.value.trim() == "") {
         erreur.innerHTML = 'Le champ Email est requis'
+        email.style.border = "2px solid red"
     }
     else if (testEmail) {
         erreur.innerHTML = "";

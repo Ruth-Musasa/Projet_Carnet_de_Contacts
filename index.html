@@ -21,41 +21,47 @@
     <section class="contenaire">
         <div class="contenaire--formulaire">
             <h2>Formulaire de contact</h2>
-            <form class="contenaire--formulaire--marges" name="contact" onsubmit="event.preventDefault(); validateForm()">
+            <form class="contenaire--formulaire--marges" name="contact"
+                onsubmit="event.preventDefault(); validateForm()">
                 <label>Prénom </label>
                 <div id="name">
-                <input type="text" id="nameInpute">
-                <p class="error_message"></p>
+                    <input type="text" id="nameInpute">
+                    <p class="error_message"></p>
                 </div>
 
                 <label>Nom </label>
-                <div id="name"> 
-                <input type="text" id="nom">
-                <p class="error_message"></p>
+                <div id="name">
+                    <input type="text" id="nom">
+                    <p class="error_message"></p>
                 </div>
 
                 <label>Télephone </label>
                 <div id="phone--cont">
-                    <input id="phone" type="tel" name="phone" />
-                    <p class="alert alert-info" style="display: none;"></p>
+                    <input id="phone" type="tel" name="phone" class="erreur" />
+                    <p class="error_message "></p>
                 </div>
 
                 <label>Groupe </label>
                 <input type="text">
 
                 <label>Email </label>
-                <input id="email_checking" type="email" required>
+                <input id="email_checking" type="email">
                 <p class="error_message"></p>
 
                 <label>Bio </label>
                 <textarea rows="5" id="inputBio_height"></textarea>
                 <div id="inputImg_height">
-                    <input type="file" id="image" accept=".jpg, .png"/>
+                    <div class="marge--img">
+                        <label for="image"> Déposer le photo <br> ici</label>
+                    
+                    <input type="file" id="image" />
                     <p class="error_message"></p>
-                    <label for="image"> Déposer le photo <br> ici</label>
                 </div>
+                </div>
+               
                 <input id="button_color--blue" type="submit" value="Créer" onclick="document.forms.contact.submit()" />
                 <input id="button_color--red" type="reset" value="Rénit" onclick="document.forms.contact.submit()" />
+           
             </form>
         </div>
         <div>

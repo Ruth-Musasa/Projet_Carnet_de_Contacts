@@ -80,10 +80,17 @@ label {
 }
 
 #inputImg_height label {
+   
     color: black;
     text-align: center;
     line-height: 1;
 }
+.marge--img{
+    padding: 20px;
+}
+/* #image {
+    display: none;
+} */
 
 #button_color--blue,
 #button_color--red {
@@ -98,11 +105,13 @@ label {
 
 #button_color--blue {
     background-color: #0880D6;
+    margin-top: 20px;
 }
 
 #button_color--red {
     background-color: #FF3838;
     margin-left: 30px;
+    margin-top: 20px;
 }
 
 /* liste de contacts */
@@ -121,9 +130,6 @@ label {
     
 }
 
-/* #image {
-    display: none;
-} */
 
 #contenaire--liste--id {
     font-size: 16px;
@@ -165,12 +171,8 @@ label {
 .error_message{
     color: red;
     font-style: italic;
+    text-align: left;
 }
-/* .erreur{
-    border: 1px red solid;
-} */
-
-
 
 /* responsive */
 
