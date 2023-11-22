@@ -1,27 +1,40 @@
 
 // gitsection image 
-const img1 = document.getElementById("image")
-img1.style.opacity = 0;
 
+let imgStyle = document.querySelector('#inputImg_height')
 let img = document.querySelector('#image');
-
+img.style.opacity=0;
 img.addEventListener('change', imgchecking);
 
 function imgchecking(event) {
 
     event.preventDefault();
 
-    imgRegExp = new RegExp('^([a-zA-Z0-9.-_]+[\.]{1}(jpg|png))$', 'g');
-    console.log(imgRegExp);
+    imgRegExp = new RegExp('^([a-zA-Z0-9.-_]+[\.]{1}(jpg|png|jpeg))$', 'g');
     let testimg = imgRegExp.test(img.value);
     let erreur = img.nextElementSibling;
-    console.log(testimg);
+
     if (testimg == true) {
-        erreur.innerHTML = "";
-    } else {
-        erreur.innerHTML = 'Deposer une image valide(png ou jpg)'
-        img.style.border = "2px solid red"
+
+        if (this.files[0].size <= 5000000) {
+            erreur.innerHTML = "";
+            imgStyle.style.border = "2px dashed #D5E9E1";
+            imgStyle.style.backgroundColor = "#D5E9E1"
+        }
+        else {
+            erreur.innerHTML = 'Deposer une image de moins de 5Mo'
+            imgStyle.style.border = "2px dashed red"
+            imgStyle.style.backgroundColor = "#F7ACA9"
+        }
     }
+
+    else {
+        erreur.innerHTML = 'Deposer une image valide(png ou jpg)';
+        imgStyle.style.border = "2px dashed red"
+        imgStyle.style.backgroundColor = "#F7ACA9"
+    }
+
+
 }
 
 
@@ -34,18 +47,16 @@ function process(event) {
     event.preventDefault();
     phoneRegExp = new RegExp('^(084|085|080|089|081|082|099|097|090)([0-9]{7})$', 'g');
     let testPhone = phoneRegExp.test(info.value);
-    console.log(testPhone);
-    console.log(info.value);
     let erreur = info.nextElementSibling;
     if (testPhone) {
 
-            erreur.innerHTML = "";
-            info.style.border = "1px solid rgb(179, 177, 177)";
+        erreur.innerHTML = "";
+        info.style.border = "1px solid rgb(179, 177, 177)";
     }
-    else if (info.value.length!==10) {
-            erreur.innerHTML = 'Veuillez saisir un numero correcte composée de 10 chiffres'
-            info.style.border = "2px solid red"
-        }
+    else if (info.value.length !== 10) {
+        erreur.innerHTML = 'Veuillez saisir un numero correcte composée de 10 chiffres'
+        info.style.border = "2px solid red"
+    }
     else {
         erreur.innerHTML = 'Veuillez saisir un numero correcte'
         info.style.border = "2px solid red"
