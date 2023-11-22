@@ -1,26 +1,27 @@
 
 // gitsection image 
-const img1 = document.getElementById("image")
+const img1 = document.getElementById("image");
 img1.style.opacity = 0;
-
 let img = document.querySelector('#image');
 
 img.addEventListener('change', imgchecking);
 
 function imgchecking(event) {
+    let imgStyle= document.querySelector('#inputImg_height');
 
     event.preventDefault();
 
-    imgRegExp = new RegExp('^([a-zA-Z0-9.-_]+[\.]{1}(jpg|png))$', 'g');
+    imgRegExp = new RegExp('^([a-zA-Z0-9.-_]+[\.]{1}(jpe?g|png))$', 'g');
     console.log(imgRegExp);
     let testimg = imgRegExp.test(img.value);
     let erreur = img.nextElementSibling;
     console.log(testimg);
     if (testimg == true) {
         erreur.innerHTML = "";
+        imgStyle.style.border = "1px dashed rgb(179, 177, 177)";
     } else {
         erreur.innerHTML = 'Deposer une image valide(png ou jpg)'
-        img.style.border = "2px solid red"
+        imgStyle.style.border="2px dashed red"
     }
 }
 
