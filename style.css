@@ -77,21 +77,29 @@ label {
     color: #555555;
     font-size: 16px;
     font-weight: 500;
+   
 }
 
 #inputImg_height label {
    
-    color: black;
+    color: #555555;
     text-align: center;
     line-height: 1;
 }
 .marge--img{
-    padding: 20px;
+    padding-top: 20px;
+    
 }
-/* #image {
-    display: none;
-} */
-
+#img--pading {
+   
+   padding-inline: 160px;
+   padding-top: 40px;
+   padding-bottom: 50px; 
+   
+}
+#image{
+    /* display: none; */
+}
 #button_color--blue,
 #button_color--red {
     height: 44px;
