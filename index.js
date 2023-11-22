@@ -24,8 +24,6 @@ function imgchecking(event) {
     }
 }
 
-
-
 // section telephone
 
 var info = document.querySelector("#phone");
@@ -81,6 +79,7 @@ function checking(event) {
 
 
 //Section prénom checking
+
 let prénom = document.querySelector("#nameInpute");
 prénom.addEventListener('change', validateForm)
 
