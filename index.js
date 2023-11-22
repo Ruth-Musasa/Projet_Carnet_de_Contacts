@@ -11,7 +11,7 @@ function imgchecking(event) {
 
     event.preventDefault();
 
-    imgRegExp = new RegExp('^[a-zA-Z0-9.-_]+[.]{1}$'+'^jpg|png$', 'g');
+    imgRegExp = new RegExp('^([a-zA-Z0-9.-_]+[\.]{1}(jpg|png))$', 'g');
     console.log(imgRegExp);
     let testimg = imgRegExp.test(img.value);
     let erreur = img.nextElementSibling;
@@ -32,7 +32,7 @@ var info = document.querySelector("#phone");
 info.addEventListener('change', process);
 function process(event) {
     event.preventDefault();
-    phoneRegExp = new RegExp('^(084|085|080|089|081|082|099|097|090)([0-9]{7}$', 'g');
+    phoneRegExp = new RegExp('^(084|085|080|089|081|082|099|097|090)([0-9]{7})$', 'g');
     let testPhone = phoneRegExp.test(info.value);
     console.log(testPhone);
     console.log(info.value);
