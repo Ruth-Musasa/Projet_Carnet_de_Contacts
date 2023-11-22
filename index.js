@@ -11,7 +11,7 @@ function imgchecking(event) {
 
     event.preventDefault();
 
-    imgRegExp = new RegExp('^[a-zA-Z0-9.-_]+[.]{1}'+'jpg|png', 'g');
+    imgRegExp = new RegExp('^[a-zA-Z0-9.-_]+[.]{1}$'+'^jpg|png$', 'g');
     console.log(imgRegExp);
     let testimg = imgRegExp.test(img.value);
     let erreur = img.nextElementSibling;
@@ -32,7 +32,7 @@ var info = document.querySelector("#phone");
 info.addEventListener('change', process);
 function process(event) {
     event.preventDefault();
-    phoneRegExp = new RegExp('^084|085|080|089|081|082|099|097|090'+'[0-9]{7}', 'g');
+    phoneRegExp = new RegExp('^(084|085|080|089|081|082|099|097|090)([0-9]{7}$', 'g');
     let testPhone = phoneRegExp.test(info.value);
     console.log(testPhone);
     console.log(info.value);
@@ -62,7 +62,7 @@ function checking(event) {
 
     event.preventDefault();
 
-    emailRegExp = new RegExp('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g');
+    emailRegExp = new RegExp('^[a-zA-Z0-9]+[@]{1}[a-zA-Z0-9]+[.]{1}[a-z]{2,10}$', 'g');
 
     let testEmail = emailRegExp.test(email.value);
     let erreur = email.nextElementSibling;
@@ -87,7 +87,7 @@ prénom.addEventListener('change', validateForm)
 function validateForm(event) {
 
     event.preventDefault();
-    nameRegExp = new RegExp('^[a-zA-Z]', 'g');
+    nameRegExp = new RegExp('^[a-zA-Z]$', 'g');
 
     let testname = nameRegExp.test(prénom.value);
     let erreur = prénom.nextElementSibling;
@@ -117,7 +117,7 @@ nom.addEventListener('change', validateName)
 function validateName(event) {
 
     event.preventDefault();
-    nameRegExp = new RegExp('^[a-zA-Z]', 'g');
+    nameRegExp = new RegExp('^[a-zA-Z]$', 'g');
 
     let testname = nameRegExp.test(nom.value);
     let erreur = nom.nextElementSibling;
