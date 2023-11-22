@@ -1,5 +1,5 @@
 
-// gitsection image a ne pas supprimer!!
+// gitsection image 
 const img1 = document.getElementById("image")
 img1.style.opacity = 0;
 
@@ -19,7 +19,7 @@ function imgchecking(event) {
     if (testimg == true) {
         erreur.innerHTML = "";
     } else {
-        erreur.innerHTML = 'Deposer une image valide (png ou jpg)'
+        erreur.innerHTML = 'Deposer une image valide(png ou jpg)'
         img.style.border = "2px solid red"
     }
 }
@@ -139,57 +139,3 @@ function validateName(event) {
         nom.style.border = "1px solid rgb(179, 177, 177)"
     }
 }
-
-
-// boutton créer 
-
-// const submit = document.getElementById("button_color--blue")
-// const Rénit = document.getElementById("button_color--red")
-// const FormContenaire = document.getElementById("contenaire--formulaire--marges")
-// const ContenaireListe = document.getElementById("contenaire--liste")
-
-// submit.onclick = function() {
-//   if (FormContenaire.value === ''){
-//     erreur.innerHTML = 'Veuillez remplir le formulaire'
-//     FormContenaire.classList.add("erreur");
-//   }
-//   }
-//   else{
-//     let li = document.createElement("li");
-//     li.innerHTML = inputBox.value;
-//     listContenaire.appendChild(li);
-//     let span = document.createElement("span");
-//     span.innerHTML = "\u00d7";
-//     li.appendChild(span)
-
-// }
-// inputBox.value = "";
-// saveData();
-// }
-
-// ContenaireListe.addEventListener("click", function(e){
-
-// if (e.target.tagName === "LI"){
-
-// e.target.classList.toggle("checked");
-// saveData();
-// }
-// else if(e.target.tagName === "SPAN"){
-// e.target.parentElement.remove();
-// saveData();
-// }
-// },false)
-
-// function saveData(){
-
-//     localStorage.setItem("data", listContenaire.innerHTML);
-// }
-
-// function showTask(){
-//     listContenaire.innerHTML = localStorage.getItem("data");
-// }
-// showTask();
-
-
-
-
