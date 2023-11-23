@@ -154,6 +154,7 @@ let contenaireListe;
 function saveData() {
     contenaireListe = document.querySelector(".contenaire--liste");
     localStorage.setItem("data", contenaireListe.innerHTML);
+    console.log(contacts);
 };
 
 function showTask() {
