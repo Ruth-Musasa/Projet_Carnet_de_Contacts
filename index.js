@@ -92,6 +92,7 @@ function checking(event) {
 
 
 //Section prénom checking
+
 let prénom = document.querySelector("#nameInpute");
 prénom.addEventListener('change', validateForm)
 
