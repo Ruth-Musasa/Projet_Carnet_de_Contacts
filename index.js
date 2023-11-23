@@ -10,10 +10,10 @@ function imgchecking(event) {
 
     event.preventDefault();
 
-    imgRegExp = new RegExp('^([a-zA-Z0-9.-_]+[\.]{1}(jpg|png|jpeg))$', 'g');
+    imgRegExp = new RegExp('^([a-zA-Z0-9.-_ ]+[\.]{1}(jpg|png|jpeg))$', 'g');
     let testimg = imgRegExp.test(img.value);
     let erreur = img.nextElementSibling;
-
+    console.log(this.files[0].name);
     if (testimg == true) {
 
         if (this.files[0].size <= 5000000) {
