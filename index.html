@@ -42,7 +42,7 @@
                 </div>
 
                 <label>Groupe </label>
-                <input type="text">
+                <input type="text" id="groupe">
 
                 <label>Email </label>
                 <input id="email_checking" type="email">
@@ -54,13 +54,13 @@
                     <div class="marge--img">
                         <label for="image" id="img--pading"> Déposer le photo</label>
                         <p>ici</p>
-                        <input type="file" id="image" name="img" /> 
+                        <input type="file" id="image" name="img" />
                         <p class="error_message"></p>
                     </div>
                 </div>
 
-                <input id="button_color--blue" type="submit" value="Créer" onclick="document.forms.contact.submit()" />
-                <input id="button_color--red" type="reset" value="Rénit" onclick="document.forms.contact.submit()" />
+                <input id="button_color--blue" type="submit" value="Créer" />
+                <input id="button_color--red" type="reset" value="Rénit" />
 
             </form>
         </div>
@@ -70,20 +70,17 @@
                 <div id="size_img"><img src="1690367672938.jpeg" alt=""></div>
                 <div>
 
-                    <div id="contenaire--liste--id">Prénom Nom - Groupe
+                    <div id="contenaire--liste--id">
+                        <p id="affichage_Prénom"></p>
+                        <p id="affichage_Nom"></p>
+                        <p id="affichage_Groupe">- </p>
                         <div id="icon">
                             <div id="edit_btn"> <img src="icon/Vector.png" alt=""></div>
                             <div id="delet_btn"> <img src="icon/VectorSupp.png" alt=""></div>
                         </div>
                     </div>
-                    <div id="contenaire--liste--num">Téléphone</div>
-                    <div id="contenaire--liste--bio">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse
-                        ratione ut accusantium molestias
-                        nihil
-                        voluptates tenetur voluptate eos provident aspernatur deleniti, ab dolorem dolor aliquid quia,
-                        libero
-                        quibusdam explicabo maiores.</div>
-
+                    <div id="contenaire--liste--num"></div>
+                    <div id="contenaire--liste--bio"></div>
                 </div>
             </div>
         </div>

@@ -1,84 +1,4 @@
 
-// gitsection image 
-
-let imgStyle = document.querySelector('#inputImg_height')
-let img = document.querySelector('#image');
-img.style.opacity = 0;
-img.addEventListener('change', imgchecking);
-
-function imgchecking(event) {
-    event.preventDefault();
-    imgRegExp = new RegExp('^([a-zA-Z0-9.-_ ]+[\.]{1}(jpg|png|jpeg))$', 'g');
-    let testimg = imgRegExp.test(img.value);
-    let erreur = img.nextElementSibling;
-
-    if (testimg == true) {
-        if (this.files[0].size <= 5000000) {
-            erreur.innerHTML = "";
-            imgStyle.style.border = "2px dashed #D5E9E1";
-            imgStyle.style.backgroundColor = "#D5E9E1"
-        } else {
-            erreur.innerHTML = 'Deposer une image de moins de 5Mo'
-            imgStyle.style.border = "2px dashed red"
-            imgStyle.style.backgroundColor = "#F7ACA9"
-        }
-    }
-    else {
-        erreur.innerHTML = 'Deposer une image valide(png ou jpg)';
-        imgStyle.style.border = "2px dashed red"
-        imgStyle.style.backgroundColor = "#F7ACA9"
-    }
-}
-
-// section telephone
-
-var info = document.querySelector("#phone");
-info.addEventListener('change', process);
-
-function process(event) {
-    event.preventDefault();
-    phoneRegExp = new RegExp('^(084|085|080|089|081|082|099|097|090)([0-9]{7})$', 'g');
-    let testPhone = phoneRegExp.test(info.value);
-    let erreur = info.nextElementSibling;
-
-    if (testPhone) {
-        erreur.innerHTML = "";
-        info.style.border = "1px solid rgb(179, 177, 177)";
-    }
-    else if (info.value.length !== 10) {
-        erreur.innerHTML = 'Veuillez saisir un numero correcte composée de 10 chiffres'
-        info.style.border = "2px solid red"
-    }
-    else {
-        erreur.innerHTML = 'Veuillez saisir un numero correcte'
-        info.style.border = "2px solid red"
-    }
-}
-
-//Section Email Checking
-
-let email = document.querySelector('#email_checking');
-email.addEventListener('change', checking);
-
-function checking(event) {
-    event.preventDefault();
-    emailRegExp = new RegExp('^[a-zA-Z0-9]+[@]{1}[a-zA-Z0-9]+[.]{1}[a-z]{2,10}$', 'g');
-    let testEmail = emailRegExp.test(email.value);
-    let erreur = email.nextElementSibling;
-
-    if (email.value.trim() == "") {
-        erreur.innerHTML = 'Le champ Email est requis'
-        email.style.border = "2px solid red"
-    }
-    else if (testEmail) {
-        erreur.innerHTML = "";
-        email.style.border = "1px solid rgb(179, 177, 177)"
-    } else {
-        erreur.innerHTML = 'Veuillez saisir une adresse E-mail correcte'
-        email.style.border = "2px solid red"
-    }
-}
-
 //Section prénom checking
 
 let prénom = document.querySelector("#nameInpute");
@@ -129,4 +49,117 @@ function validateName(event) {
     }
 }
 
+// section telephone
 
+var info = document.querySelector("#phone");
+info.addEventListener('change', process);
+
+function process(event) {
+    event.preventDefault();
+    phoneRegExp = new RegExp('^(084|085|080|089|081|082|099|097|090)([0-9]{7})$', 'g');
+    let testPhone = phoneRegExp.test(info.value);
+    let erreur = info.nextElementSibling;
+
+    if (testPhone) {
+        erreur.innerHTML = "";
+        info.style.border = "1px solid rgb(179, 177, 177)";
+    }
+    else if (info.value.length !== 10) {
+        erreur.innerHTML = 'Veuillez saisir un numero correcte composée de 10 chiffres'
+        info.style.border = "2px solid red"
+    }
+    else {
+        erreur.innerHTML = 'Veuillez saisir un numero correcte'
+        info.style.border = "2px solid red"
+    }
+}
+// section groupe
+let groupe = document.querySelector('#groupe');
+
+//Section Email Checking
+
+let email = document.querySelector('#email_checking');
+email.addEventListener('change', checking);
+
+function checking(event) {
+    event.preventDefault();
+    emailRegExp = new RegExp('^[a-zA-Z0-9]+[@]{1}[a-zA-Z0-9]+[.]{1}[a-z]{2,10}$', 'g');
+    let testEmail = emailRegExp.test(email.value);
+    let erreur = email.nextElementSibling;
+
+    if (email.value.trim() == "") {
+        erreur.innerHTML = 'Le champ Email est requis'
+        email.style.border = "2px solid red"
+    }
+    else if (testEmail) {
+        erreur.innerHTML = "";
+        email.style.border = "1px solid rgb(179, 177, 177)"
+    } else {
+        erreur.innerHTML = 'Veuillez saisir une adresse E-mail correcte'
+        email.style.border = "2px solid red"
+    }
+}
+
+// section Bio
+let bio = document.querySelector('#inputBio_height');
+
+// gitsection image 
+
+let imgStyle = document.querySelector('#inputImg_height')
+let img = document.querySelector('#image');
+img.style.opacity = 0;
+img.addEventListener('change', imgchecking);
+
+function imgchecking(event) {
+    event.preventDefault();
+    imgRegExp = new RegExp('^([a-zA-Z0-9.-_ ]+[\.]{1}(jpg|png|jpeg))$', 'g');
+    let testimg = imgRegExp.test(img.value);
+    let erreur = img.nextElementSibling;
+
+    if (testimg == true) {
+        if (this.files[0].size <= 5000000) {
+            erreur.innerHTML = "";
+            imgStyle.style.border = "2px dashed #D5E9E1";
+            imgStyle.style.backgroundColor = "#D5E9E1"
+        } else {
+            erreur.innerHTML = 'Deposer une image de moins de 5Mo'
+            imgStyle.style.border = "2px dashed red"
+            imgStyle.style.backgroundColor = "#F7ACA9"
+        }
+    }
+    else {
+        erreur.innerHTML = 'Deposer une image valide(png ou jpg)';
+        imgStyle.style.border = "2px dashed red"
+        imgStyle.style.backgroundColor = "#F7ACA9"
+    }
+}
+
+// section boutton
+
+let contacts;
+let boutton = document.querySelector("#button_color--blue")
+boutton.onclick = function () {
+    contacts = new Object();
+    contacts.nom = nom.value;
+    contacts.prenom = prénom.value;
+    contacts.telephone = info.value;
+    contacts.groupe = groupe.value;
+    contacts.email = email.value;
+    contacts.bio = bio.value;
+    console.log(contacts);
+
+};
+
+let contenaireListe;
+function saveData() {
+    contenaireListe = document.querySelector(".contenaire--liste");
+    localStorage.setItem("data", contenaireListe.innerHTML);
+};
+
+function showTask() {
+    contenaireListe.innerHTML = localStorage.getItem("data");
+}
+
+showTask();
+
+let 
