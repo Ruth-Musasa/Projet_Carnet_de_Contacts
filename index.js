@@ -1,4 +1,3 @@
-
 //Section prénom checking
 
 let prénom = document.querySelector("#nameInpute");
@@ -146,6 +145,7 @@ boutton.onclick = function () {
     contacts.groupe = groupe.value;
     contacts.email = email.value;
     contacts.bio = bio.value;
+    contacts.img= 
     console.log(contacts);
 
 };
@@ -163,4 +163,11 @@ function showTask() {
 
 showTask();
 
-let 
+let newImg = document.createElement('img');
+newImg.id    = 'size_img';
+newImg.src  = 'img.value';
+newImg.alt = 'Photo ';
+newImg.setAttribute('tabindex', '10');
+document.getElementsByClassName('contenaire--liste').appendChild(newImg);
+
+console.log();
