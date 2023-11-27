@@ -1,4 +1,3 @@
-
 //Section prénom checking
 
 let prénom = document.querySelector("#nameInpute");
@@ -108,14 +107,14 @@ img.addEventListener('change', imgchecking);
 
 function imgchecking(event) {
     event.preventDefault();
-    imgRegExp = new RegExp('^([a-zA-Z0-9.-_ ]+[\.]{1}(jpg|jpeg|png))$', 'g');
+    imgRegExp = new RegExp('^(.+[\.]{1}(jpg|png|jpeg))$', 'g');
     let testimg = imgRegExp.test(img.value);
     let erreur = img.nextElementSibling;
  
     if (testimg == true) {
         if (this.files[0].size <= 5000000) {
             erreur.innerHTML = "";
-            imgStyle.style.border = "2px dashed #D5E9E1";
+            imgStyle.style.border = "2px dashed #D5E9E1"; 
             imgStyle.style.backgroundColor = "#D5E9E1"
         } else {
             erreur.innerHTML = 'Deposer une image de moins de 5Mo'
@@ -134,13 +133,46 @@ function imgchecking(event) {
 
 let contacts;
 let boutton = document.querySelector("#button_color--blue");
-let inputs = document.querySelector("#adding")
-boutton.addEventListener('click',ajouter)
-
-
-function ajouter(event) {
-
+boutton.addEventListener('submit',formChecking);
+function formChecking (event){
     event.preventDefault();
-    if (inputs.value == ""){
-        console.log("salut");
- }
+    console.log("Salut");
+    // if (testname==true && testPhone==true && testEmail==true && testimg==true){
+    //     console.log("Bonjour");
+    // } else{
+    //   console.log("salut");
+    // }
+}
+// boutton.onclick = function () {
+//     contacts = new Object();
+//     contacts.nom = nom.value;
+//     contacts.prenom = prénom.value;
+//     contacts.telephone = info.value;
+//     contacts.groupe = groupe.value;
+//     contacts.email = email.value;
+//     contacts.bio = bio.value;
+//     contacts.img =
+//         console.log(contacts);
+//  }
+
+
+// function ajouter(event) {
+
+// function showTask() {
+//     contenaireListe.innerHTML = localStorage.getItem("data");
+// }
+
+// showTask();
+
+// let newImg = document.createElement('img');
+// newImg.id = 'size_img';
+// newImg.src = 'img.value';
+// newImg.alt = 'Photo id';
+// document.getElementsByClassName('.contenaire--liste').appendChild(newImg);
+// newImg.innerHTML = newImg.src
+
+// // document.body.appendChild(span);
+// span.innerHTML = 'Du texte en plus !';
+// console.log(newImg);
+
+// }
