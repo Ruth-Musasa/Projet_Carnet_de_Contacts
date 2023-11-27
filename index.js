@@ -133,30 +133,14 @@ function imgchecking(event) {
 // section boutton
 
 let contacts;
-let boutton = document.querySelector("#button_color--blue")
-boutton.onclick = function () {
-    contacts = new Object();
-    contacts.nom = nom.value;
-    contacts.prenom = prénom.value;
-    contacts.telephone = info.value;
-    contacts.groupe = groupe.value;
-    contacts.email = email.value;
-    contacts.bio = bio.value;
-    console.log(contacts);
+let boutton = document.querySelector("#button_color--blue");
+let inputs = document.querySelector("#adding")
+boutton.addEventListener('click',ajouter)
 
-};
 
-let contenaireListe;
-function saveData() {
-    contenaireListe = document.querySelector(".contenaire--liste");
-    localStorage.setItem("data", contenaireListe.innerHTML);
-    console.log(contacts);
-};
+function ajouter(event) {
 
-function showTask() {
-    contenaireListe.innerHTML = localStorage.getItem("data");
-}
-
-showTask();
-
-let 
+    event.preventDefault();
+    if (inputs.value == ""){
+        console.log("salut");
+ }
