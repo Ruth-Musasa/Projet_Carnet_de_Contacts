@@ -118,7 +118,7 @@ function imgchecking(event) {
     if (testimg == true) {
         if (this.files[0].size <= 5000000) {
             erreur.innerHTML = "";
-            imgStyle.style.border = "2px dashed #D5E9E1";
+            imgStyle.style.border = "2px dashed #D5E9E1"; 
             imgStyle.style.backgroundColor = "#D5E9E1"
         } else {
             erreur.innerHTML = 'Deposer une image de moins de 5Mo'
@@ -145,8 +145,8 @@ boutton.onclick = function () {
     contacts.groupe = groupe.value;
     contacts.email = email.value;
     contacts.bio = bio.value;
-    contacts.img= 
-    console.log(contacts);
+    contacts.img =
+        console.log(contacts);
 
 };
 
@@ -164,10 +164,12 @@ function showTask() {
 showTask();
 
 let newImg = document.createElement('img');
-newImg.id    = 'size_img';
-newImg.src  = 'img.value';
-newImg.alt = 'Photo ';
-newImg.setAttribute('tabindex', '10');
-document.getElementsByClassName('contenaire--liste').appendChild(newImg);
+newImg.id = 'size_img';
+newImg.src = 'img.value';
+newImg.alt = 'Photo id';
+document.getElementsByClassName('.contenaire--liste').appendChild(newImg);
+newImg.innerHTML = newImg.src
 
-console.log();
+// document.body.appendChild(span);
+span.innerHTML = 'Du texte en plus !';
+console.log(newImg);
