@@ -111,7 +111,7 @@ img.addEventListener('change', imgchecking);
 
 function imgchecking(event) {
     event.preventDefault();
-    imgRegExp = new RegExp('^([a-zA-Z0-9.-_ ]+[\.]{1}(jpg|png|jpeg))$', 'g');
+    imgRegExp = new RegExp('^(.+[\.]{1}(jpg|png|jpeg))$', 'g');
     let testimg = imgRegExp.test(img.value);
     let erreur = img.nextElementSibling;
 
