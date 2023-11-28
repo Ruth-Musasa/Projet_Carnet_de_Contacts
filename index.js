@@ -142,6 +142,9 @@ function imgchecking(event) {
     }
 }
 
+
+console.log(contacts);
+
 function showFile(file) {
     // let img =document.createElement('div')
     // img.classList.add("size_img")
@@ -155,24 +158,6 @@ function showFile(file) {
     }
 
 };
-// section boutton
-
-let contacts;
-let boutton = document.querySelector("#button_color--blue")
-boutton.onclick = function () {
-    contacts = new Object();
-    contacts.nom = nom.value;
-    contacts.prenom = prénom.value;
-    contacts.telephone = info.value;
-    contacts.groupe = groupe.value;
-    contacts.email = email.value;
-    contacts.bio = bio.value;
-    // contacts.img = showFile(this.files[0]);
-    alert(contacts)
-    console.log(contacts);
-};
-
-
 
 // let contenaireListe;
 // function saveData() {
@@ -185,5 +170,76 @@ boutton.onclick = function () {
 //     contenaireListe.innerHTML = localStorage.getItem("data");
 // }
 
-// showTask();
 
+
+// Tableau pour stocker les contacts
+const contacts = [];
+
+// Récupérer les éléments du formulaire
+
+const nomInput = document.getElementById('nom');
+const prenomInput = document.getElementById('nameInpute');
+const telephoneInput = document.getElementById('phone');
+const bioInput = document.getElementById('inputBio_height');
+const emailInput = document.getElementById('email_checking');
+const creerBouton = document.getElementById('button_color--blue');
+
+// Écouter l'événement de clic sur le bouton "Créer"
+
+creerBouton.addEventListener('click', function () {
+
+    // Récupérer les valeurs des champs du formulaire
+
+    const nom = nomInput.value;
+    const prenom = prenomInput.value;
+    const telephone = telephoneInput.value;
+    const bio = bioInput.value;
+    const email = emailInput.value;
+
+    // Créer un objet contact avec les informations
+
+    const nouveauContact = {
+        nom: nom,
+        prenom: prenom,
+        telephone: telephone,
+        bio: bio,
+        email: email
+    };
+
+    // Ajouter le nouvel objet contact au tableau
+
+    contacts.push(nouveauContact);
+
+    // Réinitialiser les champs du formulaire
+
+    nomInput.value = '';
+    prenomInput.value = '';
+    telephoneInput.value = '';
+    bioInput.value = '';
+    emailInput.value = '';
+
+    // Afficher les contacts dans la liste de contacts
+
+    afficherContacts();
+});
+
+// Fonction pour afficher les contacts dans la liste de contacts
+
+function afficherContacts() {
+
+    // Récupérer l'élément de la liste de contacts
+
+    const listeContacts = document.querySelector('contenaire--liste');
+
+    // Vider la liste de contacts actuelle
+
+    listeContacts.innerHTML = '';
+
+    // Parcourir le tableau de contacts et créer un élément de liste pour chaque contact
+
+    contacts.forEach(function (contact) {
+        const nouvelElement = document.createElement('li');
+        nouvelElement.textContent = `Nom: ${contact.nom}, Prénom: ${contact.prenom}, Téléphone: ${contact.telephone}, Bio: ${contact.bio}, Email: ${contact.email}`;
+        listeContacts.appendChild(nouvelElement);
+    });
+}
