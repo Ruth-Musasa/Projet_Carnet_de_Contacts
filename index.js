@@ -133,46 +133,92 @@ function imgchecking(event) {
     }
 }
 
-// section boutton
+  console.log(contacts);
 
-let contacts;
-let boutton = document.querySelector("#button_color--blue")
-boutton.onclick = function () {
-    contacts = new Object();
-    contacts.nom = nom.value;
-    contacts.prenom = prénom.value;
-    contacts.telephone = info.value;
-    contacts.groupe = groupe.value;
-    contacts.email = email.value;
-    contacts.bio = bio.value;
-    contacts.img =
-        console.log(contacts);
 
-};
+// let contenaireListe;
+// function saveData() {
+//     contenaireListe = document.querySelector(".contenaire--liste");
+//     localStorage.setItem("data", contenaireListe.innerHTML);
+//     console.log(contacts);
+// };
 
-let contenaireListe;
-function saveData() {
-    contenaireListe = document.querySelector(".contenaire--liste");
-    localStorage.setItem("data", contenaireListe.innerHTML);
-    console.log(contacts);
-};
+// function showTask() {
+//     contenaireListe.innerHTML = localStorage.getItem("data");
+// }
 
-function showTask() {
-    contenaireListe.innerHTML = localStorage.getItem("data");
+
+
+// Tableau pour stocker les contacts
+const contacts = [];
+
+// Récupérer les éléments du formulaire
+
+const nomInput = document.getElementById('nom');
+const prenomInput = document.getElementById('nameInpute');
+const telephoneInput = document.getElementById('phone');
+const bioInput = document.getElementById('inputBio_height');
+const emailInput = document.getElementById('email_checking');
+const creerBouton = document.getElementById('button_color--blue');
+
+// Écouter l'événement de clic sur le bouton "Créer"
+
+creerBouton.addEventListener('click', function() {
+
+  // Récupérer les valeurs des champs du formulaire
+
+  const nom = nomInput.value;
+  const prenom = prenomInput.value;
+  const telephone = telephoneInput.value;
+  const bio = bioInput.value;
+  const email = emailInput.value;
+
+  // Créer un objet contact avec les informations
+
+  const nouveauContact = {
+    nom: nom,
+    prenom: prenom,
+    telephone: telephone,
+    bio: bio,
+    email: email
+  };
+
+  // Ajouter le nouvel objet contact au tableau
+
+  contacts.push(nouveauContact);
+
+  // Réinitialiser les champs du formulaire
+
+  nomInput.value = '';
+  prenomInput.value = '';
+  telephoneInput.value = '';
+  bioInput.value = '';
+  emailInput.value = '';
+
+  // Afficher les contacts dans la liste de contacts
+
+  afficherContacts();
+});
+
+// Fonction pour afficher les contacts dans la liste de contacts
+
+function afficherContacts() {
+
+  // Récupérer l'élément de la liste de contacts
+
+  const listeContacts = document.querySelector('contenaire--liste');
+
+  // Vider la liste de contacts actuelle
+
+  listeContacts.innerHTML = '';
+
+  // Parcourir le tableau de contacts et créer un élément de liste pour chaque contact
+
+  contacts.forEach(function(contact) {
+    const nouvelElement = document.createElement('li');
+    nouvelElement.textContent = `Nom: ${contact.nom}, Prénom: ${contact.prenom}, Téléphone: ${contact.telephone}, Bio: ${contact.bio}, Email: ${contact.email}`;
+    listeContacts.appendChild(nouvelElement);
+  });
 }
-<<<<<<< HEAD
-=======
 
-showTask();
 
-let newImg = document.createElement('img');
-newImg.id = 'size_img';
-newImg.src = 'img.value';
-newImg.alt = 'Photo id';
-document.getElementsByClassName('.contenaire--liste').appendChild(newImg);
-newImg.innerHTML = newImg.src
-
-// document.body.appendChild(span);
-span.innerHTML = 'Du texte en plus !';
-console.log(newImg);
->>>>>>> 704fed49d8b639f46103c73e5b614fb876a493f3
