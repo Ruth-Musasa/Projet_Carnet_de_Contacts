@@ -243,3 +243,4 @@ function afficherContacts() {
         listeContacts.appendChild(nouvelElement);
     });
 }
+
