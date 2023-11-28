@@ -114,10 +114,7 @@ function imgchecking(event) {
     imgRegExp = new RegExp('^(.+/(jpg|png|jpeg))$', 'g');
     let testimg = imgRegExp.test(this.files[0].type);
     let erreur = img.nextElementSibling;
-    let tabImg = [Obj = {
 
-    }
-    ];
     if (testimg) {
         if (this.files[0].size <= 5000000) {
             erreur.innerHTML = "";
@@ -125,12 +122,12 @@ function imgchecking(event) {
             imgStyle.style.backgroundColor = "#D5E9E1";
             let i;
 
-            for (i = 0; i < tabImg.length; i++) {
-                tabImg = tabImg + this.files[i]
-                console.log(tabImg);
-                return tabImg
-            }
-            showFile(this.files[i]);
+            // for (i = 0; i < tabImg.length; i++) {
+            //     tabImg = tabImg + this.files[i]
+            //     console.log(tabImg);
+            //     return tabImg
+            // }
+            showFile(this.files[0]);
             return true
         } else {
             erreur.innerHTML = 'Deposer une image de moins de 5Mo'
@@ -170,10 +167,13 @@ boutton.onclick = function () {
     contacts.groupe = groupe.value;
     contacts.email = email.value;
     contacts.bio = bio.value;
-    // contacts.img =newImg;
+    // contacts.img = showFile(this.files[0]);
+    alert(contacts)
     console.log(contacts);
 };
-console.log("r");
+
+
+
 // let contenaireListe;
 // function saveData() {
 //     contenaireListe = document.querySelector(".contenaire--liste");
@@ -187,13 +187,3 @@ console.log("r");
 
 // showTask();
 
-
-
-// newImg.id = 'size_img';
-// newImg.src = 'img.value';
-// newImg.alt = 'Photo id';
-// document.getElementsByClassName('.contenaire--liste').appendChild(newImg);
-// newImg.innerHTML = newImg.src
-
-// span.innerHTML = 'Du texte en plus !';
-// console.log(newImg);
