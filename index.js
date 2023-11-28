@@ -1,3 +1,7 @@
+let testEmail;
+let testimg;
+let testname;
+let testPhone;
 //Section prénom checking
 
 let prénom = document.querySelector("#nameInpute");
@@ -6,7 +10,7 @@ prénom.addEventListener('change', validateForm)
 function validateForm(event) {
     event.preventDefault();
     nameRegExp = new RegExp('^[a-zA-Z]$', 'g');
-    let testname = nameRegExp.test(prénom.value);
+    
     let erreur = prénom.nextElementSibling;
 
     if (prénom.value.length < 3) {
@@ -31,7 +35,7 @@ nom.addEventListener('change', validateName)
 function validateName(event) {
     event.preventDefault();
     nameRegExp = new RegExp('^[a-zA-Z]$', 'g');
-    let testname = nameRegExp.test(nom.value);
+    testname = nameRegExp.test(nom.value);
     let erreur = nom.nextElementSibling;
 
     if (nom.value.length < 3) {
@@ -56,7 +60,7 @@ info.addEventListener('change', process);
 function process(event) {
     event.preventDefault();
     phoneRegExp = new RegExp('^(084|085|080|089|081|082|099|097|090)([0-9]{7})$', 'g');
-    let testPhone = phoneRegExp.test(info.value);
+    testPhone = phoneRegExp.test(info.value);
     let erreur = info.nextElementSibling;
 
     if (testPhone) {
@@ -83,7 +87,7 @@ email.addEventListener('change', checking);
 function checking(event) {
     event.preventDefault();
     emailRegExp = new RegExp('^[a-zA-Z0-9]+[@]{1}[a-zA-Z0-9]+[.]{1}[a-z]{2,10}$', 'g');
-    let testEmail = emailRegExp.test(email.value);
+    testEmail = emailRegExp.test(email.value);
     let erreur = email.nextElementSibling;
 
    if (testEmail) {
@@ -108,7 +112,7 @@ img.addEventListener('change', imgchecking);
 function imgchecking(event) {
     event.preventDefault();
     imgRegExp = new RegExp('^(.+[\.]{1}(jpg|png|jpeg))$', 'g');
-    let testimg = imgRegExp.test(img.value);
+    testimg = imgRegExp.test(img.value);
     let erreur = img.nextElementSibling;
  
     if (testimg == true) {
@@ -131,48 +135,29 @@ function imgchecking(event) {
 
 // section boutton
 
-let contacts;
+let formCheck = document.querySelector(".contenaire--formulaire--marges")
 let boutton = document.querySelector("#button_color--blue");
-boutton.addEventListener('submit',formChecking);
-function formChecking (event){
+// let formError=document.querySelector("#form_error");
+formCheck.addEventListener('input',formChecking);
+
+
+
+// while (testEmail && testPhone && testimg && testname) {
+   
+    function formChecking (event){
+   
     event.preventDefault();
-    console.log("Salut");
-    // if (testname==true && testPhone==true && testEmail==true && testimg==true){
-    //     console.log("Bonjour");
-    // } else{
-    //   console.log("salut");
-    // }
-}
-// boutton.onclick = function () {
-//     contacts = new Object();
-//     contacts.nom = nom.value;
-//     contacts.prenom = prénom.value;
-//     contacts.telephone = info.value;
-//     contacts.groupe = groupe.value;
-//     contacts.email = email.value;
-//     contacts.bio = bio.value;
-//     contacts.img =
-//         console.log(contacts);
-//  }
 
+   if(!testname && !testPhone && !testEmail && !testimg){
 
-// function ajouter(event) {
-
-// function showTask() {
-//     contenaireListe.innerHTML = localStorage.getItem("data");
+    boutton.style.backgroundColor="grey" 
+   }
+   else{
+ 
+    boutton.style.backgroundColor="blue"
+   }
+   
+ }
+    
 // }
 
-// showTask();
-
-// let newImg = document.createElement('img');
-// newImg.id = 'size_img';
-// newImg.src = 'img.value';
-// newImg.alt = 'Photo id';
-// document.getElementsByClassName('.contenaire--liste').appendChild(newImg);
-// newImg.innerHTML = newImg.src
-
-// // document.body.appendChild(span);
-// span.innerHTML = 'Du texte en plus !';
-// console.log(newImg);
-
-// }
