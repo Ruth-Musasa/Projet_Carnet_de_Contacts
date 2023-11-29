@@ -21,7 +21,7 @@ function validateForm(event) {
         prénom.style.border = "2px solid red"
         return false;
     }
-    else if (testname) {
+    else {
         erreur.innerHTML = "";
         prénom.style.border = "1px solid rgb(179, 177, 177)"
         return true;
@@ -49,7 +49,7 @@ function validateName(event) {
         nom.style.border = "2px solid red"
         return false;
     }
-    else if (testname) {
+    else {
         erreur.innerHTML = "";
         nom.style.border = "1px solid rgb(179, 177, 177)"
         return true;
@@ -129,46 +129,62 @@ function imgchecking(event) {
             erreur.innerHTML = "";
             imgStyle.style.border = "2px dashed #D5E9E1";
             imgStyle.style.backgroundColor = "#D5E9E1"
+            return true;
+
         } else {
             erreur.innerHTML = 'Deposer une image de moins de 5Mo'
             imgStyle.style.border = "2px dashed red"
             imgStyle.style.backgroundColor = "#F7ACA9"
+            return false;
         }
+
     }
     else {
         erreur.innerHTML = 'Deposer une image valide(png ou jpg)';
         imgStyle.style.border = "2px dashed red"
         imgStyle.style.backgroundColor = "#F7ACA9"
+        return false;
     }
 }
 
-// Form validation (Button)
+//********************VERIFICATION DU FORMULAIRE ET VALIDATION DU BOUTON****************************** */
 
-let formCheck = document.querySelector(".contenaire--formulaire--marges")
-let boutton = document.querySelector("#button_color--blue");
-// let formError=document.querySelector("#form_error");
-formCheck.addEventListener('input', formChecking);
+let form = document.querySelector(".contenaire--formulaire--marges")
+let button = document.querySelector("#button_color--blue");
 
+//Vérification du formulaire : la fonction gère les couleurs du bouton creer en fonction de la validité des champs du formulaire (A NE PAS MODIFIER)
 
+form.addEventListener('input', formChecking);
 
-// while (testEmail && testPhone && testimg && testname) {
 
 function formChecking(event) {
 
     event.preventDefault();
 
-    if (validateForm(event) && validateName(event) && process(event) && checking(event) ) {
+    if (validateForm(event) && validateName(event) && process(event) && groupe.value != "" && checking(event) && bio.value != "") {
 
-        console.log("ok");
 
-        // boutton.style.backgroundColor="grey" 
+        button.style.backgroundColor = "rgb(8, 128, 214)"
     }
     else {
-        console.log("nok");
-        // boutton.style.backgroundColor="blue"
+
+        button.style.backgroundColor = "rgb(85, 85, 85)"
     }
 
 }
 
-// }
+//Validation du bouton creer
+
+button.addEventListener('click', execution);
+function execution(event) {
+
+    event.preventDefault();
+
+    if (validateForm(event) && validateName(event) && process(event) && checking(event)) {
+
+        //PLACEZ LA FONCTION QUI AJOUTE ET AFFICHE LES COORDONNEES ICI 
+
+        button.style.backgroundColor = "rgb(8, 128, 214)"
+    }
+}
 
