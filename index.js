@@ -120,17 +120,24 @@ img.addEventListener('change', imgchecking);
 
 function imgchecking(event) {
     event.preventDefault();
-    imgRegExp = new RegExp('^(.+[\.]{1}(jpg|png|jpeg))$', 'g');
-    testimg = imgRegExp.test(img.value);
+    imgRegExp = new RegExp('^(.+/(jpg|png|jpeg))$', 'g');
+    let testimg = imgRegExp.test(this.files[0].type);
     let erreur = img.nextElementSibling;
 
-    if (testimg == true) {
+    if (testimg) {
         if (this.files[0].size <= 5000000) {
             erreur.innerHTML = "";
             imgStyle.style.border = "2px dashed #D5E9E1";
-            imgStyle.style.backgroundColor = "#D5E9E1"
-            return true;
+            imgStyle.style.backgroundColor = "#D5E9E1";
+            let i;
 
+            // for (i = 0; i < tabImg.length; i++) {
+            //     tabImg = tabImg + this.files[i]
+            //     console.log(tabImg);
+            //     return tabImg
+            // }
+            showFile(this.files[0]);
+            return true
         } else {
             erreur.innerHTML = 'Deposer une image de moins de 5Mo'
             imgStyle.style.border = "2px dashed red"
@@ -164,11 +171,11 @@ function formChecking(event) {
     if (validateForm(event) && validateName(event) && process(event) && groupe.value != "" && checking(event) && bio.value != "") {
 
 
-        button.style.backgroundColor = "rgb(8, 128, 214)"
+        button.style.backgroundColor = "rgb(8, 128, 214)";
     }
     else {
 
-        button.style.backgroundColor = "rgb(85, 85, 85)"
+        button.style.backgroundColor = "rgb(85, 85, 85)";
     }
 
 }
