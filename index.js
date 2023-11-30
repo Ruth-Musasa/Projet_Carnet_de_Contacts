@@ -8,7 +8,6 @@ function validateForm(event) {
     nameRegExp = new RegExp('^[a-zA-Z]$', 'g');
     let testname = nameRegExp.test(prénom.value);
     let erreur = prénom.nextElementSibling;
-
     if (prénom.value.length < 3) {
         erreur.innerHTML = "Veuillez saisir un prénom valide d'au moins 3 caractères"
         prénom.style.border = "2px solid red"
@@ -16,11 +15,11 @@ function validateForm(event) {
     else if (prénom.value.length > 50) {
         erreur.innerHTML = 'Veuillez saisir un prénom valide inférieur à 50 caractères'
         prénom.style.border = "2px solid red"
-    }
-    else if (testname) {
+    } else {
         erreur.innerHTML = "";
         prénom.style.border = "1px solid rgb(179, 177, 177)"
     }
+
 }
 
 //Section nom checking
@@ -42,9 +41,11 @@ function validateName(event) {
         erreur.innerHTML = 'Veuillez saisir un nom valide inférieur à 50 caractères'
         nom.style.border = "2px solid red"
     }
-    else if (testname) {
+    else {
         erreur.innerHTML = "";
         nom.style.border = "1px solid rgb(179, 177, 177)"
+
+
     }
 }
 
@@ -121,14 +122,8 @@ function imgchecking(event) {
             imgStyle.style.border = "2px dashed #D5E9E1";
             imgStyle.style.backgroundColor = "#D5E9E1";
             let i;
-
-            // for (i = 0; i < tabImg.length; i++) {
-            //     tabImg = tabImg + this.files[i]
-            //     console.log(tabImg);
-            //     return tabImg
-            // }
             showFile(this.files[0]);
-            return true
+            return true;
         } else {
             erreur.innerHTML = 'Deposer une image de moins de 5Mo'
             imgStyle.style.border = "2px dashed red"
@@ -142,8 +137,6 @@ function imgchecking(event) {
     }
 }
 
-
-console.log(contacts);
 
 function showFile(file) {
     // let img =document.createElement('div')
@@ -159,6 +152,7 @@ function showFile(file) {
 
 };
 
+
 // let contenaireListe;
 // function saveData() {
 //     contenaireListe = document.querySelector(".contenaire--liste");
@@ -170,77 +164,11 @@ function showFile(file) {
 //     contenaireListe.innerHTML = localStorage.getItem("data");
 // }
 
+let close = document.getElementsByClassName("close");
 
-
-// Tableau pour stocker les contacts
-const contacts = [];
-
-// Récupérer les éléments du formulaire
-
-const nomInput = document.getElementById('nom');
-const prenomInput = document.getElementById('nameInpute');
-const telephoneInput = document.getElementById('phone');
-const bioInput = document.getElementById('inputBio_height');
-const emailInput = document.getElementById('email_checking');
-const creerBouton = document.getElementById('button_color--blue');
-
-// Écouter l'événement de clic sur le bouton "Créer"
-
-creerBouton.addEventListener('click', function () {
-
-    // Récupérer les valeurs des champs du formulaire
-
-    const nom = nomInput.value;
-    const prenom = prenomInput.value;
-    const telephone = telephoneInput.value;
-    const bio = bioInput.value;
-    const email = emailInput.value;
-
-    // Créer un objet contact avec les informations
-
-    const nouveauContact = {
-        nom: nom,
-        prenom: prenom,
-        telephone: telephone,
-        bio: bio,
-        email: email
-    };
-
-    // Ajouter le nouvel objet contact au tableau
-
-    contacts.push(nouveauContact);
-
-    // Réinitialiser les champs du formulaire
-
-    nomInput.value = '';
-    prenomInput.value = '';
-    telephoneInput.value = '';
-    bioInput.value = '';
-    emailInput.value = '';
-
-    // Afficher les contacts dans la liste de contacts
-
-    afficherContacts();
-});
-
-// Fonction pour afficher les contacts dans la liste de contacts
-
-function afficherContacts() {
-
-    // Récupérer l'élément de la liste de contacts
-
-    const listeContacts = document.querySelector('contenaire--liste');
-
-    // Vider la liste de contacts actuelle
-
-    listeContacts.innerHTML = '';
-
-    // Parcourir le tableau de contacts et créer un élément de liste pour chaque contact
-
-    contacts.forEach(function (contact) {
-        const nouvelElement = document.createElement('li');
-        nouvelElement.textContent = `Nom: ${contact.nom}, Prénom: ${contact.prenom}, Téléphone: ${contact.telephone}, Bio: ${contact.bio}, Email: ${contact.email}`;
-        listeContacts.appendChild(nouvelElement);
-    });
+for (i = 0; i < close.length; i++) {
+    close[i].onclick = function () {
+        var div = this.parentElement;
+        div.style.display = "none";
+    }
 }
-
