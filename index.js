@@ -143,7 +143,7 @@ function imgchecking(event) {
 }
 
 
-console.log(contacts);
+// console.log(contacts);
 
 function showFile(file) {
     // let img =document.createElement('div')
@@ -160,15 +160,7 @@ function showFile(file) {
 };
 
 // let contenaireListe;
-// function saveData() {
-//     contenaireListe = document.querySelector(".contenaire--liste");
-//     localStorage.setItem("data", contenaireListe.innerHTML);
-//     console.log(contacts);
-// };
 
-// function showTask() {
-//     contenaireListe.innerHTML = localStorage.getItem("data");
-// }
 
 
 
@@ -177,38 +169,32 @@ const contacts = [];
 
 // Récupérer les éléments du formulaire
 
-const nomInput = document.getElementById('nom');
-const prenomInput = document.getElementById('nameInpute');
-const telephoneInput = document.getElementById('phone');
-const bioInput = document.getElementById('inputBio_height');
-const emailInput = document.getElementById('email_checking');
+const nomInput = document.getElementById('nom').value;
+const prenomInput = document.getElementById('nameInpute').value;
+const telephoneInput = document.getElementById('phone').value;
+const bioInput = document.getElementById('inputBio_height').value;
+const emailInput = document.getElementById('email_checking').value;
 const creerBouton = document.getElementById('button_color--blue');
 
 // Écouter l'événement de clic sur le bouton "Créer"
 
-creerBouton.addEventListener('click', function () {
+creerBouton.onclick = function() {
 
-    // Récupérer les valeurs des champs du formulaire
+    
+// Créer un objet contact avec les informations
 
-    const nom = nomInput.value;
-    const prenom = prenomInput.value;
-    const telephone = telephoneInput.value;
-    const bio = bioInput.value;
-    const email = emailInput.value;
-
-    // Créer un objet contact avec les informations
-
-    const nouveauContact = {
-        nom: nom,
-        prenom: prenom,
-        telephone: telephone,
-        bio: bio,
-        email: email
-    };
+const nouveauContact = {
+    nom: nomInput,
+    prenom: prenomInput,
+    telephone: telephoneInput,
+    bio: bioInput,
+    email: emailInput,
+};
 
     // Ajouter le nouvel objet contact au tableau
 
     contacts.push(nouveauContact);
+    console.log(nouveauContact);
 
     // Réinitialiser les champs du formulaire
 
@@ -221,7 +207,7 @@ creerBouton.addEventListener('click', function () {
     // Afficher les contacts dans la liste de contacts
 
     afficherContacts();
-});
+};
 
 // Fonction pour afficher les contacts dans la liste de contacts
 
@@ -229,7 +215,7 @@ function afficherContacts() {
 
     // Récupérer l'élément de la liste de contacts
 
-    const listeContacts = document.querySelector('contenaire--liste');
+    const listeContacts = document.getElementById('listeContacts');
 
     // Vider la liste de contacts actuelle
 
@@ -239,7 +225,7 @@ function afficherContacts() {
 
     contacts.forEach(function (contact) {
         const nouvelElement = document.createElement('li');
-        nouvelElement.textContent = `Nom: ${contact.nom}, Prénom: ${contact.prenom}, Téléphone: ${contact.telephone}, Bio: ${contact.bio}, Email: ${contact.email}`;
+        nouvelElement.innerHTML = `Nom: ${contact.nom}, Prénom: ${contact.prenom}, Téléphone: ${contact.telephone}, Bio: ${contact.bio}, Email: ${contact.email}`;
         listeContacts.appendChild(nouvelElement);
     });
-}
+ }
