@@ -21,73 +21,65 @@
     <section class="contenaire">
         <div class="contenaire--formulaire">
             <h2>Formulaire de contact</h2>
-            <form class="contenaire--formulaire--marges" name="contact"
-                onsubmit="event.preventDefault(); validateForm()">
+            <form class="contenaire--formulaire--marges" name="contact" >
                 <label>Prénom </label>
                 <div id="name">
-                    <input type="text" id="nameInpute">
+                    <input type="text" id="nameInpute" class="adding">
                     <p class="error_message"></p>
                 </div>
 
                 <label>Nom </label>
                 <div id="name">
-                    <input type="text" id="nom">
+                    <input type="text" id="nom" class="adding">
                     <p class="error_message"></p>
                 </div>
 
                 <label>Télephone </label>
                 <div id="phone--cont">
-                    <input id="phone" type="tel" name="phone" class="erreur" />
+                    <input id="phone" type="tel" name="phone" class="erreur adding" />
                     <p class="error_message "></p>
                 </div>
 
                 <label>Groupe </label>
-                <input type="text">
+                <input type="text" id="groupe" class="adding">
 
                 <label>Email </label>
-                <input id="email_checking" type="email">
+                <input id="email_checking" type="email" class="adding">
                 <p class="error_message"></p>
 
                 <label>Bio </label>
-                <textarea rows="5" id="inputBio_height"></textarea>
+                <textarea rows="5" id="inputBio_height" class="adding"></textarea>
                 <div id="inputImg_height">
                     <div class="marge--img">
                         <label for="image" id="img--pading"> Déposer le photo</label>
                         <p>ici</p>
-                        <input type="file" id="image" name="img" /> 
+                        <input type="file" id="image" name="img"  class="adding"/>
                         <p class="error_message"></p>
                     </div>
                 </div>
+                <input id="button_color--blue" type="submit"  value="Créer" />
+                <input id="button_color--red" type="reset" value="Rénit" />
 
-                <input id="button_color--blue" type="submit" value="Créer" onclick="document.forms.contact.submit()" />
-                <input id="button_color--red" type="reset" value="Rénit" onclick="document.forms.contact.submit()" />
+                <!-- <p class="error_message" id="form_error" >Votre formulaire n'est pas valide</p> -->
 
             </form>
         </div>
         <div>
             <h2>Liste de contacts</h2>
             <div class="contenaire--liste">
-
                 <div id="size_img"></div>
                 <!-- <div>
                     <div id="contenaire--liste--id">
                         <p id="affichage_Prénom"></p>
                         <p id="affichage_Nom"></p>
                         <p id="affichage_Groupe">- </p> -->
-
                         <div id="icon">
                             <div id="edit_btn"> <img src="icon/Vector.png" alt=""></div>
                             <div id="delet_btn"> <img src="icon/VectorSupp.png" alt=""></div>
                         </div>
                     <!-- </div>
-                    <div id="contenaire--liste--num">Téléphone</div>
-                    <div id="contenaire--liste--bio">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse
-                        ratione ut accusantium molestias
-                        nihil
-                        voluptates tenetur voluptate eos provident aspernatur deleniti, ab dolorem dolor aliquid quia,
-                        libero
-                        quibusdam explicabo maiores.</div>
-
+                    <div id="contenaire--liste--num"></div>
+                    <div id="contenaire--liste--bio"></div>
                 </div>
             </div> -->
         </div>
