@@ -170,7 +170,7 @@ function formChecking(event) {
 
     event.preventDefault();
 
-    if (validateForm(event) && validateName(event) && process(event) && groupe.value != "" && checking(event) && bio.value != "") {
+    if (validateForm(event) && validateName(event) && process(event) && groupe.value != "" && checking(event) && bio.value != "" ) {
 
 
         button.style.backgroundColor = "rgb(8, 128, 214)";
@@ -192,7 +192,7 @@ function execution(event) {
 
     if (validateForm(event) && validateName(event) && process(event) && checking(event)) {
 
-        //PLACEZ LA FONCTION QUI AJOUTE ET AFFICHE LES COORDONNEES ICI 
+      
 
         button.style.backgroundColor = "rgb(8, 128, 214)"
     }
