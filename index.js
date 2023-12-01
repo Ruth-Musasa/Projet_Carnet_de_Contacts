@@ -112,7 +112,7 @@ function checking(event) {
 let bio = document.querySelector('#inputBio_height');
 
 // gitsection image 
-
+let testimg;
 let imgStyle = document.querySelector('#inputImg_height')
 let img = document.querySelector('#image');
 img.style.opacity = 0;
@@ -120,8 +120,9 @@ img.addEventListener('change', imgchecking);
 
 function imgchecking(event) {
     event.preventDefault();
-    imgRegExp = new RegExp('^(.+/(jpg|png|jpeg))$', 'g');
-    let testimg = imgRegExp.test(this.files[0].type);
+    imgRegExp = new RegExp('^.+/(jpg|png|jpeg)$', 'g');
+    testimg = imgRegExp.test(this.files[0].type);
+
     let erreur = img.nextElementSibling;
 
     if (testimg) {
@@ -130,32 +131,46 @@ function imgchecking(event) {
             imgStyle.style.border = "2px dashed #D5E9E1";
             imgStyle.style.backgroundColor = "#D5E9E1";
             showFile(this.files[0]);
-            return true
+            return true;
         } else {
             erreur.innerHTML = 'Deposer une image de moins de 5Mo'
             imgStyle.style.border = "2px dashed red"
             imgStyle.style.backgroundColor = "#F7ACA9"
+            return false;
         }
     }
     else {
         erreur.innerHTML = 'Deposer une image valide(png ou jpg)';
         imgStyle.style.border = "2px dashed red"
         imgStyle.style.backgroundColor = "#F7ACA9"
+        return false;
     }
 }
 
-
 function showFile(file) {
-    let dropzone = document.querySelector('#size_img');
+    // let dropzone = document.querySelector('#size_img');
     let fileReader = new FileReader();
     fileReader.readAsDataURL(file);
     fileReader.onload = () => {
         let fileUrl = fileReader.result
-        dropzone.innerHTML = `<img src="${fileUrl}" alt = "image"/>`;
+        // dropzone.innerHTML = `<img src="${fileUrl}" alt = "image"/>`;
     }
 
-};
+}
 
+
+let listContact = [];
+let objContact = {
+    prenom: prénom.value,
+    Nom: nom.value,
+    telephone: info.value,
+    Groupe: groupe.value,
+    Email: email.value,
+    Bio: bio.value,
+
+}
+
+console.log(objContact);
 //********************VERIFICATION DU FORMULAIRE ET VALIDATION DU BOUTON****************************** */
 
 let form = document.querySelector(".contenaire--formulaire--marges")
@@ -172,7 +187,6 @@ function formChecking(event) {
 
     if (validateForm(event) && validateName(event) && process(event) && groupe.value != "" && checking(event) && bio.value != "" ) {
 
-
         button.style.backgroundColor = "rgb(8, 128, 214)";
     }
     else {
@@ -186,14 +200,35 @@ function formChecking(event) {
 
 button.addEventListener('click', execution);
 
+
 function execution(event) {
 
     event.preventDefault();
 
-    if (validateForm(event) && validateName(event) && process(event) && checking(event)) {
-
-      
-
+    if (validateForm(event) && validateName(event) && process(event) && groupe.value != "" && checking(event) && bio.value != "") {
+        //PLACEZ LA FONCTION QUI AJOUTE ET AFFICHE LES COORDONNEES ICI 
+        listContact.push(objContact);
+        let affichageListe = document.querySelector(".contenaire--liste");
+        const div = document.createElement("div");
+        affichageListe.appendChild(div);
+        div.classList.add('contenaire--liste--id');
+        div.innerHTML = ` <div id="size_img"></div>
+<div>
+    <div id="contenaire--liste--id">
+        <p >${objContact.prenom} </p>
+        <p >${objContact.Nom}</p>
+        <p >-${objContact.Groupe} </p> 
+        <div id="icon">
+            <div id="edit_btn"> <img src="icon/Vector.png" alt=""></div>
+            <div id="delet_btn"> <img src="icon/VectorSupp.png" alt=""></div>
+        </div>
+    </div>
+    <div id="contenaire--liste--num">${objContact.telephone}</div>
+    <div id="contenaire--liste--bio">${objContact.Bio}</div>
+</div>
+</div> `
         button.style.backgroundColor = "rgb(8, 128, 214)"
     }
 }
+
+

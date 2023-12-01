@@ -77,25 +77,27 @@ label {
     color: #555555;
     font-size: 16px;
     font-weight: 500;
-   
+
 }
 
 #inputImg_height label {
-   
+
     color: #555555;
     text-align: center;
     line-height: 1;
 }
-.marge--img{
+
+.marge--img {
     padding-top: 20px;
-    
+
 }
+
 #img--pading {
-   
-   padding-inline: 160px;
-   padding-top: 40px;
-   padding-bottom: 50px; 
-   
+
+    padding-inline: 160px;
+    padding-top: 40px;
+    padding-bottom: 50px;
+
 }
 
 #button_color--blue,
@@ -133,7 +135,7 @@ label {
     width: 162px;
     height: 162px;
     border-radius: 162px;
-    
+
 }
 
 
@@ -144,11 +146,12 @@ label {
     color: #555555;
     line-height: 4;
     display: flex;
-    justify-content: space-between;
+   
 }
 
 #icon {
     display: flex;
+    justify-content: space-between;
 }
 
 #icon div {
@@ -173,8 +176,9 @@ label {
     padding-right: 15px;
     text-align: justify;
 }
+
 /*message d'erreur email*/
-.error_message{
+.error_message {
     color: red;
     font-style: italic;
     text-align: left;
@@ -210,6 +214,10 @@ label {
         padding-right: 50px;
     }
 
+    #width--title {
+        width: 100%;
+    }
+
 }
 
 @media screen and (max-width:690px) {
@@ -236,4 +244,7 @@ label {
         text-align: justify;
     }
 
+    #width--title {
+        width: 100%;
+    }
 }
