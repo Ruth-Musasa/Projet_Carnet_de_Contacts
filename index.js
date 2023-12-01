@@ -170,7 +170,6 @@ let objContact = {
 
 }
 
-console.log(objContact);
 //********************VERIFICATION DU FORMULAIRE ET VALIDATION DU BOUTON****************************** */
 
 let form = document.querySelector(".contenaire--formulaire--marges")
@@ -186,6 +185,19 @@ function formChecking(event) {
     event.preventDefault();
 
     if (validateForm(event) && validateName(event) && process(event) && groupe.value != "" && checking(event) && bio.value != "" ) {
+
+        objContact = {
+            prenom: prénom.value,
+            Nom: nom.value,
+            telephone: info.value,
+            Groupe: groupe.value,
+            Email: email.value,
+            Bio: bio.value,
+        }
+
+        
+        
+        console.log(objContact);
 
         button.style.backgroundColor = "rgb(8, 128, 214)";
     }
@@ -215,6 +227,7 @@ function execution(event) {
         div.innerHTML = ` <div id="size_img"></div>
 <div>
     <div id="contenaire--liste--id">
+    <img src="${img.value} ">
         <p >${objContact.prenom} </p>
         <p >${objContact.Nom}</p>
         <p >-${objContact.Groupe} </p> 
@@ -230,5 +243,21 @@ function execution(event) {
         button.style.backgroundColor = "rgb(8, 128, 214)"
     }
 }
+
+// Supprimer
+let Supprimer = document.getElementById("delet_btn");
+Supprimer.addEventListener("click", Sup);
+
+function supprimer_confirmer(event) {
+
+    let item = event.target;
+    if (item.classList[0] === 'delete-btn') {
+        let  = item.parentElement;
+        .remove();
+    }
+
+
+}
+
 
 
