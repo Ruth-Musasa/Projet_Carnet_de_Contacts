@@ -101,7 +101,8 @@ function checking(event) {
         erreur.innerHTML = "";
         email.style.border = "1px solid rgb(179, 177, 177)"
         return true;
-    } else {
+    } 
+    else {
         erreur.innerHTML = 'Veuillez saisir une adresse E-mail correcte'
         email.style.border = "2px solid red"
         return false;
@@ -118,8 +119,7 @@ let img = document.querySelector('#image');
 img.style.opacity = 0;
 img.addEventListener('change', imgchecking);
 
-function imgchecking(event) {
-    event.preventDefault();
+function imgchecking() {
     imgRegExp = new RegExp('^.+/(jpg|png|jpeg)$', 'g');
     testimg = imgRegExp.test(this.files[0].type);
 
@@ -130,7 +130,6 @@ function imgchecking(event) {
             erreur.innerHTML = "";
             imgStyle.style.border = "2px dashed #D5E9E1";
             imgStyle.style.backgroundColor = "#D5E9E1";
-            showFile(this.files[0]);
             return true;
         } else {
             erreur.innerHTML = 'Deposer une image de moins de 5Mo'
@@ -146,31 +145,37 @@ function imgchecking(event) {
         return false;
     }
 }
-
-function showFile(file) {
+let fileUrl;
+function showFile() {
     // let dropzone = document.querySelector('#size_img');
     let fileReader = new FileReader();
-    fileReader.readAsDataURL(file);
+    fileReader.readAsDataURL(img.files[0]);
     fileReader.onload = () => {
-        let fileUrl = fileReader.result
+        fileUrl = fileReader.result
         // dropzone.innerHTML = `<img src="${fileUrl}" alt = "image"/>`;
     }
 
 }
 
-
+let objContact
 let listContact = [];
-let objContact = {
-    prenom: prénom.value,
-    Nom: nom.value,
-    telephone: info.value,
-    Groupe: groupe.value,
-    Email: email.value,
-    Bio: bio.value,
+function objectaff() {
 
+    objContact = {
+        prenom: prénom.value,
+        Nom: nom.value,
+        telephone: info.value,
+        Groupe: groupe.value,
+        Email: email.value,
+        Bio: bio.value,
+
+    }
+    listContact.push(objContact);
+    return objContact
 }
 
-console.log(objContact);
+
+
 //********************VERIFICATION DU FORMULAIRE ET VALIDATION DU BOUTON****************************** */
 
 let form = document.querySelector(".contenaire--formulaire--marges")
@@ -185,7 +190,10 @@ function formChecking(event) {
 
     event.preventDefault();
 
-    if (validateForm(event) && validateName(event) && process(event) && groupe.value != "" && checking(event) && bio.value != "" ) {
+    if (validateForm(event) && validateName(event) && process(event) && groupe.value != "" && checking(event) && bio.value != "") {
+        objectaff();
+        showFile()
+        console.log(objectaff());
 
         button.style.backgroundColor = "rgb(8, 128, 214)";
     }
@@ -198,37 +206,50 @@ function formChecking(event) {
 
 //Validation du bouton creer
 
-button.addEventListener('click', execution);
+button.addEventListener('click', function (event) {
+    event.preventDefault();
+    imgchecking.call(img);
+    execution(event)
+});
 
 
 function execution(event) {
-
     event.preventDefault();
+    let affichageListe;
 
     if (validateForm(event) && validateName(event) && process(event) && groupe.value != "" && checking(event) && bio.value != "") {
+
+
         //PLACEZ LA FONCTION QUI AJOUTE ET AFFICHE LES COORDONNEES ICI 
-        listContact.push(objContact);
-        let affichageListe = document.querySelector(".contenaire--liste");
+
+        affichageListe = document.querySelector(".contenaire--liste");
         const div = document.createElement("div");
         affichageListe.appendChild(div);
-        div.classList.add('contenaire--liste--id');
-        div.innerHTML = ` <div id="size_img"></div>
-<div>
-    <div id="contenaire--liste--id">
-        <p >${objContact.prenom} </p>
-        <p >${objContact.Nom}</p>
-        <p >-${objContact.Groupe} </p> 
-        <div id="icon">
-            <div id="edit_btn"> <img src="icon/Vector.png" alt=""></div>
-            <div id="delet_btn"> <img src="icon/VectorSupp.png" alt=""></div>
+        div.classList.add('contenaire--liste');
+        div.innerHTML = 
+`<div class="contenaire--list--space">
+    <div id="size_img"><img src="${fileUrl}" alt = "image"/></div>
+    <div>
+        <div id="contenaire--liste--id">
+            <p id="affichage_Prénom">${objContact.prenom} </p>
+            <p id="affichage_Nom">${objContact.Nom}</p>
+            <p id="affichage_Groupe">- ${objContact.Groupe} </p> 
         </div>
+        <div id="contenaire--liste--num">${objContact.telephone}</div>
+        <div id="contenaire--liste--bio">${objContact.Bio}</div>
     </div>
-    <div id="contenaire--liste--num">${objContact.telephone}</div>
-    <div id="contenaire--liste--bio">${objContact.Bio}</div>
-</div>
-</div> `
+    <div id="icon">
+            <div id="edit_btn"> <img src="icon/Vector.png" alt=""></div>
+            <div class="delet_btn"> <img src="icon/VectorSupp.png" alt=""></div>
+    </div>
+</div>`
         button.style.backgroundColor = "rgb(8, 128, 214)"
+
     }
+    showFile();
 }
+
+
+
 
 

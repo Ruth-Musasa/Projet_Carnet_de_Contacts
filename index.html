@@ -21,7 +21,7 @@
     <section class="contenaire">
         <div class="contenaire--formulaire">
             <h2>Formulaire de contact</h2>
-            <form class="contenaire--formulaire--marges" name="contact">
+            <form class="contenaire--formulaire--marges" name="contact" enctype="multipart/form-data" method="post">
                 <label>Prénom </label>
                 <div id="name">
                     <input type="text" id="nameInpute" class="adding">
@@ -51,20 +51,24 @@
                 <textarea rows="5" id="inputBio_height" class="adding"></textarea>
                 <div id="inputImg_height">
                     <div class="marge--img">
-                        <label for="image" id="img--pading"> Déposer le photo</label>
+                        <label for="image" id="img--pading"> Déposer la photo</label>
                         <p>ici</p>
                         <input type="file" id="image" name="img" class="adding" />
                         <p class="error_message"></p>
                     </div>
                 </div>
-                <input id="button_color--blue" type="submit" value="Créer" />
-                <input id="button_color--red" type="reset" value="Rénit" />
+                <div class="btn">
+                    <input id="button_color--blue" type="submit" value="Créer" />
+                    <input id="button_color--red" type="reset" value="Rénit" />
+                </div>
+               
 
             </form>
         </div>
         <div>
             <h2 id="width--title">Liste de contacts</h2>
             <div class="contenaire--liste">
+                <!-- <div id="size_img"></div> -->
             </div>
     </section>
     <script src="index.js"></script>
