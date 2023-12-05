@@ -101,7 +101,9 @@ function checking(event) {
         erreur.innerHTML = "";
         email.style.border = "1px solid rgb(179, 177, 177)"
         return true;
-    } else {
+    } 
+   
+    else {
         erreur.innerHTML = 'Veuillez saisir une adresse E-mail correcte'
         email.style.border = "2px solid red"
         return false;
