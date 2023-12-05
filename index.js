@@ -1,8 +1,7 @@
 //Section prénom validationEmail
 let prénom = document.querySelector("#nameInpute");
 prénom.addEventListener('change', validationPrenom)
-function validationPrenom(event) {
-    event.preventDefault();
+function validationPrenom() {
     nameRegExp = new RegExp('^[a-zA-Z0-9]{3,50}$', 'g');
     testname = nameRegExp.test(prénom.value);
     let erreur = prénom.nextElementSibling;
@@ -28,8 +27,7 @@ function validationPrenom(event) {
 //Section nom validationEmail
 let nom = document.querySelector("#nom");
 nom.addEventListener('change', validateName)
-function validateName(event) {
-    event.preventDefault();
+function validateName() {
     nameRegExp = new RegExp('^[a-zA-Z0-9]{3,50}$', 'g');
     testname = nameRegExp.test(nom.value);
     let erreur = nom.nextElementSibling;
@@ -53,10 +51,9 @@ function validateName(event) {
 }
 
 // section telephone
-var phone = document.querySelector("#phone");
+let phone = document.querySelector("#phone");
 phone.addEventListener('change', validationPhone);
-function validationPhone(event) {
-    event.preventDefault();
+function validationPhone() {
     phoneRegExp = new RegExp('^(084|085|080|089|081|082|099|097|090)([0-9]{7})$', 'g');
     testPhone = phoneRegExp.test(phone.value);
     let erreur = phone.nextElementSibling;
@@ -81,8 +78,7 @@ let groupe = document.querySelector('#groupe');
 //Section Email validationEmail
 let email = document.querySelector('#email_checking');
 email.addEventListener('change', validationEmail);
-function validationEmail(event) {
-    event.preventDefault();
+function validationEmail() {
     emailRegExp = new RegExp('^[a-zA-Z0-9]+[@]{1}[a-zA-Z0-9]+[.]{1}[a-z]{2,10}$', 'g');
     testEmail = emailRegExp.test(email.value);
     let erreur = email.nextElementSibling;
@@ -122,8 +118,7 @@ function imgvalidation() {
             imgStyle.style.backgroundColor = "#F7ACA9"
             return false;
         }
-    }
-    else {
+    } else {
         erreur.innerHTML = 'Deposer une image valide(png ou jpg)';
         imgStyle.style.border = "2px dashed red"
         imgStyle.style.backgroundColor = "#F7ACA9"
@@ -153,6 +148,7 @@ function objectaff() {
         Bio: bio.value,
     }
     listContact.push(objContact);
+    console.log(objContact);
     return objContact
 }
 
@@ -163,57 +159,106 @@ let button = document.querySelector("#button_color--blue");
 
 //Vérification du formulaire : la fonction gère les couleurs du bouton creer en fonction de la validité des champs du formulaire (A NE PAS MODIFIER)
 
-form.addEventListener('input', formvalidation);
-
-function formvalidation(event) {
-    event.preventDefault();
-    if (validationPrenom(event) && validateName(event) && validationPhone(event) && groupe.value != "" && validationEmail(event) && bio.value != "" ) {
-        objectaff();
-        showFile()
-        button.style.backgroundColor = "rgb(8, 128, 214)";
-    } else {
-        button.style.backgroundColor = "rgb(85, 85, 85)";
-    }
-}
+form.addEventListener('submit', formvalidation);
+function formvalidation() {
+  if (validationPrenom() || validateName() || validationPhone()  || validationEmail() ) {
+    console.log('in validation true');
+    objectaff();
+    showFile()
+    button.style.backgroundColor = "rgb(8, 128, 214)";
+    return true
+  } else {
+    button.style.backgroundColor = "rgb(85, 85, 85)";
+  }};
 
 //Validation du bouton creer
 
 button.addEventListener('click', function (event) {
-    event.preventDefault();
-    imgvalidation.call(img);
-    execution(event)
+  event.preventDefault();
+  if (formvalidation() && imgvalidation.call(img)) {
+    afficherContacts(event)
+  }
 });
 
-function execution(event) {
-    event.preventDefault();
-    if (validationPrenom(event) && validateName(event) && validationPhone(event) && groupe.value != "" && validationEmail(event) && bio.value != "" ) {
-
-        //PLACEZ LA FONCTION QUI AJOUTE ET AFFICHE LES COORDONNEES ICI 
-
-        let affichageListe = document.querySelector(".contenaire--liste");
-        const div = document.createElement("div");
-        affichageListe.appendChild(div);
-        div.classList.add('contenaire--liste');
-        div.innerHTML =
-            `<div class="contenaire--list--space">
-    <div id="size_img"><img src="${fileUrl}" alt = "image"/></div>
-    <div>
-        <div id="contenaire--liste--id">
-            <p> ${objContact.prenom} </p>
-            <p> ${objContact.Nom} </p>
-            <p> - ${objContact.Groupe} </p> 
-        </div>
-        <div id="contenaire--liste--num">${objContact.telephone}</div>
-        <div id="contenaire--liste--bio">${objContact.Bio}</div>
-    </div>
-    <div id="icon">
-            <div id="edit_btn"> <img src="icon/Vector.png" alt=""></div>
-            <div id="delet_btn"> <img src="icon/VectorSupp.png" alt=""></div>
-        </div>
-</div>`
-        button.style.backgroundColor = "rgb(8, 128, 214)"
-    }
-    showFile();
+function afficherContacts() {
+    let affichageListe = document.querySelector(".contenaire--liste");
+    affichageListe.innerHTML="";
+  listContact.forEach((objContact, indexContact) => {
+    const div = document.createElement("div");
+    affichageListe.appendChild(div);
+    div.classList.add('contenaire--liste');
+    div.innerHTML =
+      `<div class="contenaire--list--space">
+      <div id="size_img"><img src="${fileUrl}" alt = "image"/></div>
+      <div>
+          <div id="contenaire--liste--id">
+              <p> ${objContact.prenom} </p>
+              <p> ${objContact.Nom} </p>
+              <p> - ${objContact.Groupe} </p> 
+          </div>
+          <div id="contenaire--liste--num">${objContact.telephone}</div>
+          <div id="contenaire--liste--bio">${objContact.Bio}</div>
+      </div>
+      <div id="icon">
+              <button id="edit_btn" onclick="editContact(${indexContact})"> <img src="icon/Vector.png" alt="" > </button>
+              <button id="delet_btn" onclick="messageSupression(${indexContact})> <img src="icon/VectorSupp.png" alt="" > </button>
+          </div>
+  </div>`
+    button.style.backgroundColor = "rgb(8, 128, 214)"
+  })
 }
 
+// function de modification
+function editContact(indexContact) {
+//   modifyForm = objContact;
+//   modifyForm.style.display = "block";
+  prénom.value = listContact[indexContact].prenom;
+  nom.value = listContact[indexContact].Nom;
+  phone.value = listContact[indexContact].telephone;
+  groupe.value = listContact[indexContact].Groupe;
+  email.value = listContact[indexContact].Email;
+  bio.value = listContact[indexContact].Bio;
+  // img.value=listContact[indexContact];
+};
+
+modifyForm.addEventListener('click', function (event) {
+  event.addEventListener()
+  const modifyPreNom = prénom.value;
+  const modifyNom = nom.value;
+  const modifyPhone = phone.value;
+  const modifyGroupe = groupe.value;
+  const modifyBio = bio.value;
+
+  // Mise à jour des informations du contact
+
+  listContact[indexContact].nom = modifyNom;
+  listContact[indexContact].prenom = modifyPreNom;
+  listContact[indexContact].Phone = modifyPhone;
+  listContact[indexContact].Groupe = modifyGroupe;
+  listContact[indexContact].Groupe = modifyBio;
+
+  // Réinitialisation des champs du formulaire
+
+  nameInpute.value = '';
+  nom.value = '';
+  phone.value = '';
+  groupe.value = '';
+  email_checking.value = '';
+  inputBio_height.value = '';
+  afficherContacts()
+});
+
+
+// function de supression
+
+function messageSupression() {
+  if (confirm("Etes vous sur de vouloir supprimer ce contact ? ")) {
+    suprimeContact(indexContact);
+  }
+};
+
+function suprimeContact(indexContact) {
+  objContact.splice([indexContact], 1);
+  afficherContacts();
+}
 
