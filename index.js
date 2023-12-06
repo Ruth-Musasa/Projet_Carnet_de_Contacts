@@ -200,22 +200,22 @@ function afficherContacts() {
         affichageListe.appendChild(div);
         div.classList.add('contenaire--liste');
         div.innerHTML =
-            `<div class="contenaire--list--space">
-      <div id="size_img"><img src="${objContact.image}" alt = "image"/></div>
-      <div>
-          <div id="contenaire--liste--id">
-              <p> ${objContact.prenom} </p>
-              <p> ${objContact.Nom} </p>
-              <p> - ${objContact.Groupe} </p> 
-          </div>
-          <div id="contenaire--liste--num">${objContact.telephone}</div>
-          <div id="contenaire--liste--bio">${objContact.Bio}</div>
-      </div>
-      <div id="icon">
-              <button id="edit_btn" onclick="editContact(${indexContact})"> <img src="icon/Vector.png" alt="" > </button>
-              <button id="delet_btn" onclick="suprimeContact(${indexContact})"> <img src="icon/VectorSupp.png" alt="" > </button>
-          </div>
-  </div>`
+`<div class="contenaire--list--space">
+    <div id="size_img"><img src="${objContact.image}" alt = "image"/></div>
+    <div>
+        <div id="contenaire--liste--id">
+            <p> ${objContact.prenom} </p>
+            <p> ${objContact.Nom} </p>
+            <p> - ${objContact.Groupe} </p> 
+        </div>
+        <div id="contenaire--liste--num">${objContact.telephone}</div>
+        <div id="contenaire--liste--bio">${objContact.Bio}</div> 
+    </div>
+    <div id="icon">
+        <button id="edit_btn" onclick="editContact(${indexContact})"> <img src="icon/Vector.png" alt="" > </button>
+        <button id="delet_btn" onclick="suprimeContact(${indexContact})"> <img src="icon/VectorSupp.png" alt="" > </button>
+    </div>
+</div>`
         button.style.backgroundColor = "rgb(8, 128, 214)"
     })
     prénom.value = '';
