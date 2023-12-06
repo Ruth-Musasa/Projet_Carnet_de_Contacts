@@ -101,7 +101,8 @@ label {
 }
 
 #button_color--blue,
-#button_color--red {
+#button_color--red,
+#button_color--blue--edit {
     height: 44px;
     width: 135px;
     padding: 10px 45px 10px 45px;
@@ -111,7 +112,8 @@ label {
     margin-bottom: 30px;
 }
 
-#button_color--blue {
+#button_color--blue,
+#button_color--blue--edit {
     background-color: rgb(8, 128, 214);
     margin-top: 20px;
 }
@@ -123,9 +125,6 @@ label {
 }
 
 /* liste de contacts */
-
-.contenaire--liste {}
-
 #size_img img {
     width: 162px;
     height: 162px;
