@@ -37,8 +37,11 @@ h2 {
 .contenaire--formulaire,
 .contenaire--liste {
     border: 1px #C4C4C4 solid;
-
 }
+
+/* .contenaire--liste {
+    scrollbar-gutter:initial;
+} */
 
 .contenaire--formulaire--marges {
     padding: 18px;
@@ -95,7 +98,8 @@ label {
 
 #button_color--blue,
 #button_color--red,
-#button_color--blue--edit {
+#button_color--blue--edit,
+#button_color--red--edit {
     height: 44px;
     width: 135px;
     padding: 10px 45px 10px 45px;
@@ -111,7 +115,8 @@ label {
     margin-top: 20px;
 }
 
-#button_color--red {
+#button_color--red,
+#button_color--red--edit {
     background-color: #FF3838;
     margin-left: 30px;
     margin-top: 20px;
@@ -144,7 +149,7 @@ label {
 #edit_btn,
 #delet_btn {
     background-color: #fff;
-padding-bottom: 100px;
+    padding-bottom: 100px;
 }
 
 #contenaire--liste--num {
@@ -166,7 +171,6 @@ padding-bottom: 100px;
 }
 
 .contenaire--list--space {
-
     display: grid;
     grid-template-columns: 20% 70% 10%;
     padding: 15px;
