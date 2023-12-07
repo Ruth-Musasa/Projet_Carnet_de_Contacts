@@ -87,8 +87,7 @@ function validationEmail() {
         erreur.innerHTML = "";
         email.style.border = "1px solid rgb(179, 177, 177)"
         return true;
-    } 
-    else {
+    } else {
         erreur.innerHTML = 'Veuillez saisir une adresse E-mail correcte'
         email.style.border = "2px solid red"
         return false;
@@ -114,14 +113,10 @@ function imgvalidation() {
             return true;
         } else {
             erreur.innerHTML = 'Deposer une image de moins de 5Mo'
-            imgStyle.style.border = "2px dashed red"
-            imgStyle.style.backgroundColor = "#F7ACA9"
             return false;
         }
     } else {
         erreur.innerHTML = 'Deposer une image valide(png ou jpg)';
-        imgStyle.style.border = "2px dashed red"
-        imgStyle.style.backgroundColor = "#F7ACA9"
         return false;
     }
 }
@@ -150,7 +145,6 @@ function objectaff() {
         Bio: bio.value,
         image: fileUrl,
     }
-    listContact.push(objContact);
     return objContact
 }
 
@@ -165,34 +159,31 @@ btnEdit.hidden = true;
 btnAnnuler.hidden = true;
 //Vérification du formulaire : la fonction gère les couleurs du bouton creer en fonction de la validité des champs du formulaire (A NE PAS MODIFIER)
 
-// form.addEventListener('click', formvalidation);
 function formvalidation(type) {
     if (validationPrenom() && validateName() && validationPhone() && validationEmail()) {
         if (type == 'EDIT')
             updateContact()
         else
             objectaff();
-
-        button.style.backgroundColor = "rgb(8, 128, 214)";
         return true
+    }
+};
+
+//Validation des boutons 
+button.addEventListener('click', (event) => validationOnClick(event, 'CREATE'))
+btnEdit.addEventListener('click', (event) => validationOnClick(event, 'EDIT'))
+
+function validationOnClick(event, type) {
+    event.preventDefault();
+    if (formvalidation(type) && imgvalidation.call(img)) {
+        listContact.push(objContact);
+        afficherContacts(event)
+        button.style.backgroundColor = "rgb(8, 128, 214)";
     } else {
         confirm(" Vous devez remplir tous les champs pour etre en mesure de crée un contact")
         button.style.backgroundColor = "rgb(85, 85, 85)";
     }
 };
-
-//Validation du bouton creer
-
-button.addEventListener('click', (event) => validationOnClick(event, 'CREATE'))
-
-function validationOnClick(event, type) {
-    event.preventDefault();
-    if (formvalidation(type) && imgvalidation.call(img)) {
-        afficherContacts(event)
-    }
-};
-
-btnEdit.addEventListener('click', (event) => validationOnClick(event, 'EDIT'))
 
 function afficherContacts() {
     let affichageListe = document.querySelector(".contenaire--liste");
@@ -228,8 +219,7 @@ function afficherContacts() {
 // function de modification
 function editContact(indexContact) {
     btnEdit.hidden = false;
- 
- 7   button.hidden = true;
+    button.hidden = true;
     btnAnnuler.hidden = false;
     btnRenit.hidden = true;
     prénom.value = listContact[indexContact].prenom;
@@ -239,25 +229,24 @@ function editContact(indexContact) {
     email.value = listContact[indexContact].Email;
     bio.value = listContact[indexContact].Bio;
     idEditedContact = indexContact;
-    btnAnnuler.onclick = function () {
-        btnEdit.hidden = true;
-        button.hidden = false;
-        btnAnnuler.hidden = true;
-        btnRenit.hidden = false;
-        afficherContacts();
-    }
 };
 
+btnAnnuler.onclick = function () {
+    btnEdit.hidden = true;
+    button.hidden = false;
+    btnAnnuler.hidden = true;
+    btnRenit.hidden = false;
+}
 // function de modification
 
 function updateContact() {
     listContact[idEditedContact].prenom = prénom.value;
     listContact[idEditedContact].Nom = nom.value;
     listContact[idEditedContact].image = fileUrl;
-    listContact[indexContact].telephone = phone.value;
-    listContact[indexContact].Groupe = groupe.value;
-    listContact[indexContact].Email = email.value;
-    listContact[indexContact].Bio = bio.value;
+    listContact[idEditedContact].telephone = phone.value;
+    listContact[idEditedContact].Groupe = groupe.value;
+    listContact[idEditedContact].Email = email.value;
+    listContact[idEditedContact].Bio = bio.value;
     btnEdit.hidden = true;
     button.hidden = false;
     btnAnnuler.hidden = true;
@@ -265,7 +254,7 @@ function updateContact() {
     afficherContacts();
 }
 
-$// function de supression
+// function de supression
 
 function suprimeContact(indexContact) {
     if (confirm("Etes vous sur de vouloir supprimer ce contact ? ")) {
