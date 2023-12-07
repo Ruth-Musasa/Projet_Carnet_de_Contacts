@@ -113,14 +113,10 @@ function imgvalidation() {
             return true;
         } else {
             erreur.innerHTML = 'Deposer une image de moins de 5Mo'
-            imgStyle.style.border = "2px dashed red"
-            imgStyle.style.backgroundColor = "#F7ACA9"
             return false;
         }
     } else {
         erreur.innerHTML = 'Deposer une image valide(png ou jpg)';
-        imgStyle.style.border = "2px dashed red"
-        imgStyle.style.backgroundColor = "#F7ACA9"
         return false;
     }
 }
@@ -237,25 +233,24 @@ function editContact(indexContact) {
     email.value = listContact[indexContact].Email;
     bio.value = listContact[indexContact].Bio;
     idEditedContact = indexContact;
-    btnAnnuler.onclick = function () {
-        btnEdit.hidden = true;
-        button.hidden = false;
-        btnAnnuler.hidden = true;
-        btnRenit.hidden = false;
-        afficherContacts();
-    }
 };
 
+btnAnnuler.onclick = function () {
+    btnEdit.hidden = true;
+    button.hidden = false;
+    btnAnnuler.hidden = true;
+    btnRenit.hidden = false;
+}
 // function de modification
 
 function updateContact() {
     listContact[idEditedContact].prenom = prénom.value;
     listContact[idEditedContact].Nom = nom.value;
     listContact[idEditedContact].image = fileUrl;
-    listContact[indexContact].telephone = phone.value;
-    listContact[indexContact].Groupe = groupe.value;
-    listContact[indexContact].Email = email.value;
-    listContact[indexContact].Bio = bio.value;
+    listContact[idEditedContact].telephone = phone.value;
+    listContact[idEditedContact].Groupe = groupe.value;
+    listContact[idEditedContact].Email = email.value;
+    listContact[idEditedContact].Bio = bio.value;
     btnEdit.hidden = true;
     button.hidden = false;
     btnAnnuler.hidden = true;
