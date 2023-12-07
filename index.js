@@ -1,3 +1,4 @@
+let idEditedContact = null;
 //Section prénom validationEmail
 let prénom = document.querySelector("#nameInpute");
 prénom.addEventListener('change', validationPrenom)
@@ -109,8 +110,6 @@ function imgvalidation() {
     if (testimg) {
         if (this.files[0].size <= 5000000) {
             erreur.innerHTML = "";
-            imgStyle.style.border = "2px dashed #D5E9E1";
-            // imgStyle.style.backgroundColor = "#D5E9E1";
             return true;
         } else {
             erreur.innerHTML = 'Deposer une image de moins de 5Mo'
@@ -133,7 +132,6 @@ function showFile(event) {
     fileReader.readAsDataURL(event.target.files[0]);
     fileReader.onload = () => {
         fileUrl = fileReader.result
-        console.log(fileUrl);
         return true
     }
 }
@@ -151,7 +149,7 @@ function objectaff() {
         Bio: bio.value,
         image: fileUrl,
     }
-        listContact.push(objContact);
+    listContact.push(objContact);
     return objContact
 }
 
@@ -166,10 +164,14 @@ btnEdit.hidden = true;
 btnAnnuler.hidden = true;
 //Vérification du formulaire : la fonction gère les couleurs du bouton creer en fonction de la validité des champs du formulaire (A NE PAS MODIFIER)
 
-form.addEventListener('submit', formvalidation);
-function formvalidation() {
+// form.addEventListener('click', formvalidation);
+function formvalidation(type) {
     if (validationPrenom() && validateName() && validationPhone() && validationEmail()) {
-        objectaff();
+        if (type == 'EDIT')
+            updateContact()
+        else
+            objectaff();
+
         button.style.backgroundColor = "rgb(8, 128, 214)";
         return true
     } else {
@@ -180,15 +182,16 @@ function formvalidation() {
 
 //Validation du bouton creer
 
-button.addEventListener('click', validationOnClick)
-function validationOnClick(event) {
+button.addEventListener('click', (event) => validationOnClick(event, 'CREATE'))
+
+function validationOnClick(event, type) {
     event.preventDefault();
-    if (formvalidation() && imgvalidation.call(img)) {
+    if (formvalidation(type) && imgvalidation.call(img)) {
         afficherContacts(event)
     }
 };
 
-btnEdit.addEventListener('click', validationOnClick)
+btnEdit.addEventListener('click', (event) => validationOnClick(event, 'EDIT'))
 
 function afficherContacts() {
     let affichageListe = document.querySelector(".contenaire--liste");
@@ -217,13 +220,8 @@ function afficherContacts() {
 </div>`
         button.style.backgroundColor = "rgb(8, 128, 214)"
     })
-    prénom.value = '';
-    nom.value = '';
-    phone.value = '';
-    groupe.value = '';
-    email.value = '';
-    bio.value = '';
-    img.value = ''
+    document.querySelector('form').reset();
+    img.value = null
 }
 
 // function de modification
@@ -238,14 +236,7 @@ function editContact(indexContact) {
     groupe.value = listContact[indexContact].Groupe;
     email.value = listContact[indexContact].Email;
     bio.value = listContact[indexContact].Bio;
-    btnEdit.onclick = function () {
-        listContact.splice(indexContact, 1);
-        afficherContacts();
-        btnEdit.hidden = true;
-        button.hidden = false;
-        btnAnnuler.hidden = true;
-        btnRenit.hidden = false;
-    }
+    idEditedContact = indexContact;
     btnAnnuler.onclick = function () {
         btnEdit.hidden = true;
         button.hidden = false;
@@ -254,6 +245,24 @@ function editContact(indexContact) {
         afficherContacts();
     }
 };
+
+// function de modification
+
+function updateContact() {
+    listContact[idEditedContact].prenom = prénom.value;
+    listContact[idEditedContact].Nom = nom.value;
+    listContact[idEditedContact].image = fileUrl;
+    listContact[indexContact].telephone = phone.value;
+    listContact[indexContact].Groupe = groupe.value;
+    listContact[indexContact].Email = email.value;
+    listContact[indexContact].Bio = bio.value;
+    btnEdit.hidden = true;
+    button.hidden = false;
+    btnAnnuler.hidden = true;
+    btnRenit.hidden = false;
+    afficherContacts();
+}
+
 // function de supression
 
 function suprimeContact(indexContact) {
