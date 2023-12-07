@@ -145,7 +145,6 @@ function objectaff() {
         Bio: bio.value,
         image: fileUrl,
     }
-    listContact.push(objContact);
     return objContact
 }
 
@@ -167,27 +166,25 @@ function formvalidation(type) {
             updateContact()
         else
             objectaff();
-
-        button.style.backgroundColor = "rgb(8, 128, 214)";
         return true
+    }
+};
+
+//Validation des boutons 
+button.addEventListener('click', (event) => validationOnClick(event, 'CREATE'))
+btnEdit.addEventListener('click', (event) => validationOnClick(event, 'EDIT'))
+
+function validationOnClick(event, type) {
+    event.preventDefault();
+    if (formvalidation(type) && imgvalidation.call(img)) {
+        listContact.push(objContact);
+        afficherContacts(event)
+        button.style.backgroundColor = "rgb(8, 128, 214)";
     } else {
         confirm(" Vous devez remplir tous les champs pour etre en mesure de crée un contact")
         button.style.backgroundColor = "rgb(85, 85, 85)";
     }
 };
-
-//Validation du bouton creer
-
-button.addEventListener('click', (event) => validationOnClick(event, 'CREATE'))
-
-function validationOnClick(event, type) {
-    event.preventDefault();
-    if (formvalidation(type) && imgvalidation.call(img)) {
-        afficherContacts(event)
-    }
-};
-
-btnEdit.addEventListener('click', (event) => validationOnClick(event, 'EDIT'))
 
 function afficherContacts() {
     let affichageListe = document.querySelector(".contenaire--liste");
