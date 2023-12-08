@@ -102,6 +102,7 @@ function checkEmailExistence() {
 
 let email = document.querySelector('#email_checking');
 email.addEventListener('change', validationEmail);
+
 function validationEmail() {
     emailRegExp = new RegExp('^[a-zA-Z0-9]+[@]{1}[a-zA-Z0-9]+[.]{1}[a-z]{2,10}$', 'g');
     testEmail = emailRegExp.test(email.value);
