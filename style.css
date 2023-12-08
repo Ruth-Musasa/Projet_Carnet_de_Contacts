@@ -39,9 +39,11 @@ h2 {
     border: 1px #C4C4C4 solid;
 }
 
-/* .contenaire--liste {
-    scrollbar-gutter:initial;
-} */
+.scroller {
+    height: 965.5px;
+    overflow-y: scroll;
+  }
+  
 
 .contenaire--formulaire--marges {
     padding: 18px;
