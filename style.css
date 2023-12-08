@@ -37,8 +37,11 @@ h2 {
 .contenaire--formulaire,
 .contenaire--liste {
     border: 1px #C4C4C4 solid;
-
 }
+
+/* .contenaire--liste {
+    scrollbar-gutter:initial;
+} */
 
 .contenaire--formulaire--marges {
     padding: 18px;
@@ -65,8 +68,6 @@ label {
     width: 100%;
     height: 115px;
     border: 1px #C4C4C4 solid;
-
-
 }
 
 #inputImg_height {
@@ -77,29 +78,28 @@ label {
     color: #555555;
     font-size: 16px;
     font-weight: 500;
-   
 }
 
 #inputImg_height label {
-   
     color: #555555;
     text-align: center;
     line-height: 1;
 }
-.marge--img{
+
+.marge--img {
     padding-top: 20px;
-    
 }
+
 #img--pading {
-   
-   padding-inline: 160px;
-   padding-top: 40px;
-   padding-bottom: 50px; 
-   
+    padding-inline: 160px;
+    padding-top: 40px;
+    padding-bottom: 50px;
 }
 
 #button_color--blue,
-#button_color--red {
+#button_color--red,
+#button_color--blue--edit,
+#button_color--red--edit {
     height: 44px;
     width: 135px;
     padding: 10px 45px 10px 45px;
@@ -109,33 +109,25 @@ label {
     margin-bottom: 30px;
 }
 
-#button_color--blue {
+#button_color--blue,
+#button_color--blue--edit {
     background-color: rgb(8, 128, 214);
     margin-top: 20px;
 }
 
-#button_color--red {
+#button_color--red,
+#button_color--red--edit {
     background-color: #FF3838;
     margin-left: 30px;
     margin-top: 20px;
 }
 
 /* liste de contacts */
-
-.contenaire--liste {
-    display: grid;
-    grid-template-columns: 20% 80%;
-    padding: 15px;
-    grid-gap: 20px;
-}
-
 #size_img img {
     width: 162px;
     height: 162px;
     border-radius: 162px;
-    
 }
-
 
 #contenaire--liste--id {
     font-size: 16px;
@@ -144,7 +136,6 @@ label {
     color: #555555;
     line-height: 4;
     display: flex;
-    justify-content: space-between;
 }
 
 #icon {
@@ -152,8 +143,13 @@ label {
 }
 
 #icon div {
-
     padding-right: 20px;
+}
+
+#edit_btn,
+#delet_btn {
+    background-color: #fff;
+    padding-bottom: 100px;
 }
 
 #contenaire--liste--num {
@@ -173,8 +169,16 @@ label {
     padding-right: 15px;
     text-align: justify;
 }
+
+.contenaire--list--space {
+    display: grid;
+    grid-template-columns: 20% 70% 10%;
+    padding: 15px;
+    grid-gap: 20px;
+}
+
 /*message d'erreur email*/
-.error_message{
+.error_message {
     color: red;
     font-style: italic;
     text-align: left;
@@ -210,6 +214,10 @@ label {
         padding-right: 50px;
     }
 
+    #width--title {
+        width: 100%;
+    }
+
 }
 
 @media screen and (max-width:690px) {
@@ -236,4 +244,7 @@ label {
         text-align: justify;
     }
 
+    #width--title {
+        width: 100%;
+    }
 }
