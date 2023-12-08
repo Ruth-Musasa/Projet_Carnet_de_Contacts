@@ -4,7 +4,7 @@ let erreur;
 let prénom = document.querySelector("#nameInpute");
 prénom.addEventListener('change', validationPrenom)
 function validationPrenom() {
-    nameRegExp = new RegExp('^[a-zA-Z0-9]{3,50}$', 'g');
+    nameRegExp = new RegExp('^[a-zA-Z0-9 ]{3,50}$', 'g');
     testname = nameRegExp.test(prénom.value);
     erreur = prénom.nextElementSibling;
     if (testname) {
@@ -30,7 +30,7 @@ function validationPrenom() {
 let nom = document.querySelector("#nom");
 nom.addEventListener('change', validateName)
 function validateName() {
-    nameRegExp = new RegExp('^[a-zA-Z0-9]{3,50}$', 'g');
+    nameRegExp = new RegExp('^[a-zA-Z0-9 ]{3,50}$', 'g');
     testname = nameRegExp.test(nom.value);
     erreur = nom.nextElementSibling;
     if (testname) {
@@ -90,7 +90,7 @@ function validationPhone() {
 let groupe = document.querySelector('#groupe');
 groupe.addEventListener('change', validationGroupe);
 function validationGroupe() {
-groupRegExp = new RegExp('^[\<]+$', 'g');
+groupRegExp = new RegExp('^[a-zA-Z0-9 ]+$', 'g');
 testGroupe = groupRegExp.test(groupe.value);
 if (!testGroupe) {
    confirm("Soyez gentil SVP")
@@ -130,12 +130,11 @@ function validationEmail() {
 let bio = document.querySelector('#inputBio_height');
 bio.addEventListener('change', validationBio);
 function validationBio() {
-bioRegExp = new RegExp('^[\<]+$', 'g');
-testBio = groupRegExp.test(bio.value);
-console.log(testBio);
+bioRegExp = new RegExp('^[a-zA-Z0-9 ]+$', 'g');
+testBio = bioRegExp.test(bio.value);
 if (!testBio) {
    confirm("Soyez gentil SVP")
-    Bio.value = "";
+    bio.value = "";
 }}
 
 // gitsection image 
