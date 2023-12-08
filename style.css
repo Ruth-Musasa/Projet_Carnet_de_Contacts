@@ -188,7 +188,7 @@ label {
 /* responsive */
 
 @media screen and (max-width: 1400px) and (min-width:690px) {
-    .contenaire {
+    /* .contenaire {
         display: flex;
         flex-wrap: wrap;
     }
@@ -216,7 +216,58 @@ label {
 
     #width--title {
         width: 100%;
+    } */
+    .contenaire {
+        display: flex;
+        flex-wrap: wrap;
+        margin-inline: 10px;
     }
+
+    .contenaire--formulaire,
+    .contenaire--liste {
+        width: 100%;
+
+    }
+    .btn {
+        display:flex;
+        
+    }
+    #img--pading {
+        padding-left:0;
+    }
+
+    .contenaire--liste {
+        display: flex;
+        flex-wrap: wrap;
+    }
+   
+
+    #contenaire--liste--bio {
+
+        padding-right: 0;
+        text-align: justify;
+    }
+
+    #width--title {
+        width: 100%;
+    }
+    #size_img img {
+        width: 120px;
+        height: 120px;
+        border-radius: 162px;
+    }
+  #mobile_show{
+    padding-left: 50px;
+    padding-block: 5px;
+  }
+  #affichage_Prénom{
+    padding-right: 5px;
+  }
+  #icon {
+    display: flex;
+    padding-left: 15px;
+}
+
 
 }
 
@@ -232,19 +283,44 @@ label {
         width: 100%;
 
     }
+    .btn {
+        display:flex;
+        
+    }
+    #img--pading {
+        padding-left:0;
+    }
 
-    .contenaire--liste {
+    /* .contenaire--liste {
         display: flex;
         flex-wrap: wrap;
-    }
+    } */
+   
 
     #contenaire--liste--bio {
 
-        padding-right: 0px;
+        padding-right: 0;
         text-align: justify;
     }
 
     #width--title {
         width: 100%;
     }
+    #size_img img {
+        width: 120px;
+        height: 120px;
+        border-radius: 162px;
+    }
+  #mobile_show{
+    padding-left: 50px;
+    padding-block: 5px;
+  }
+  #affichage_Prénom{
+    padding-right: 5px;
+  }
+  #icon {
+    display: flex;
+    padding-left: 15px;
+}
+   
 }
