@@ -1,13 +1,10 @@
 let idEditedContact = null;
-<<<<<<< HEAD
-=======
 let erreur;
->>>>>>> f06bf3d135ae4f34c62838291ce5a26e39de6510
 //Section prénom validationEmail
 let prénom = document.querySelector("#nameInpute");
 prénom.addEventListener('change', validationPrenom)
 function validationPrenom() {
-    nameRegExp = new RegExp('^[a-zA-Z0-9]{3,50}$', 'g');
+    nameRegExp = new RegExp('^[a-zA-Z0-9 ]{3,50}$', 'g');
     testname = nameRegExp.test(prénom.value);
     erreur = prénom.nextElementSibling;
     if (testname) {
@@ -33,7 +30,7 @@ function validationPrenom() {
 let nom = document.querySelector("#nom");
 nom.addEventListener('change', validateName)
 function validateName() {
-    nameRegExp = new RegExp('^[a-zA-Z0-9]{3,50}$', 'g');
+    nameRegExp = new RegExp('^[a-zA-Z0-9 ]{3,50}$', 'g');
     testname = nameRegExp.test(nom.value);
     erreur = nom.nextElementSibling;
     if (testname) {
@@ -91,6 +88,14 @@ function validationPhone() {
 
 // section groupe
 let groupe = document.querySelector('#groupe');
+groupe.addEventListener('change', validationGroupe);
+function validationGroupe() {
+groupRegExp = new RegExp('^[a-zA-Z0-9 ]+$', 'g');
+testGroupe = groupRegExp.test(groupe.value);
+if (!testGroupe) {
+   confirm("Soyez gentil SVP")
+    groupe.value = "";
+}}
 
 //Section Email validationEmail
 
@@ -123,6 +128,14 @@ function validationEmail() {
 
 // section Bio
 let bio = document.querySelector('#inputBio_height');
+bio.addEventListener('change', validationBio);
+function validationBio() {
+bioRegExp = new RegExp('^[a-zA-Z0-9 ]+$', 'g');
+testBio = bioRegExp.test(bio.value);
+if (!testBio) {
+   confirm("Soyez gentil SVP")
+    bio.value = "";
+}}
 
 // gitsection image 
 let testimg;
@@ -186,16 +199,10 @@ btnEdit.hidden = true;
 btnAnnuler.hidden = true;
 //Vérification du formulaire : la fonction gère les couleurs du bouton creer en fonction de la validité des champs du formulaire (A NE PAS MODIFIER)
 
-<<<<<<< HEAD
-// form.addEventListener('click', formvalidation);
-function formvalidation(type) {
-    if (validationPrenom() && validateName() && validationPhone() && validationEmail()) {
-=======
 
 function formvalidation(type) {
     if (validationPrenom() && validateName() && validationPhone() && validationEmail()) {
 
->>>>>>> f06bf3d135ae4f34c62838291ce5a26e39de6510
         if (type == 'EDIT')
             updateContact()
         else
@@ -205,18 +212,6 @@ function formvalidation(type) {
 };
 
 //Validation des boutons 
-<<<<<<< HEAD
-button.addEventListener('click', (event) => validationOnClick(event, 'CREATE'))
-btnEdit.addEventListener('click', (event) => validationOnClick(event, 'EDIT'))
-
-function validationOnClick(event, type) {
-    event.preventDefault();
-    if (formvalidation(type) && imgvalidation.call(img)) {
-        listContact.push(objContact);
-        afficherContacts(event)
-        button.style.backgroundColor = "rgb(8, 128, 214)";
-    } else {
-=======
 button.addEventListener('click', (event) => validationOnClickCreer(event, 'CREATE'))
 btnEdit.addEventListener('click', (event) => validationOnClickModifier(event, 'EDIT'))
 
@@ -244,14 +239,11 @@ function validationOnClickCreer(event, type) {
         button.style.backgroundColor = "rgb(8, 128, 214)";
     }   
     else {
->>>>>>> f06bf3d135ae4f34c62838291ce5a26e39de6510
         confirm(" Vous devez remplir tous les champs pour etre en mesure de crée un contact")
         button.style.backgroundColor = "rgb(85, 85, 85)";
     }
 };
 
-<<<<<<< HEAD
-=======
 function validationOnClickModifier(event, type) {
     event.preventDefault();
    
@@ -267,7 +259,6 @@ if (formvalidation(type) && imgvalidation.call(img)) {
     }
 };
 
->>>>>>> f06bf3d135ae4f34c62838291ce5a26e39de6510
 function afficherContacts() {
     let affichageListe = document.querySelector(".contenaire--liste");
     affichageListe.innerHTML = "";
@@ -344,12 +335,8 @@ function suprimeContact(indexContact) {
         listContact.splice(indexContact, 1);
         afficherContacts()
     }
-<<<<<<< HEAD
-}
-=======
 }
 
 
 
 
->>>>>>> f06bf3d135ae4f34c62838291ce5a26e39de6510
