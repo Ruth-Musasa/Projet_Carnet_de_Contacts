@@ -1,11 +1,40 @@
 let idEditedContact = null;
 let erreur;
-//Section prénom validationEmail
+let nom = document.querySelector("#nom");
 let prénom = document.querySelector("#nameInpute");
+let phone = document.querySelector("#phone");
+let objContact;
+let listContact = getContacts();
+afficherContacts();
+let email = document.querySelector('#email_checking');
+let bio = document.querySelector('#inputBio_height');
+let groupe = document.querySelector('#groupe');
+let testimg;
+let img = document.querySelector('#image');
+let fileUrl;
+let button = document.querySelector("#button_color--blue");
+let btnEdit = document.getElementById('button_color--blue--edit');
+let btnRenit = document.getElementById('button_color--red');
+let btnAnnuler = document.getElementById('button_color--red--edit');
+
+
+groupe.addEventListener('change', validationGroupe);
+bio.addEventListener('change', validationBio);
+email.addEventListener('change', validationEmail);
 prénom.addEventListener('change', validationPrenom)
+nom.addEventListener('change', validateName)
+img.addEventListener('change', imgvalidation);
+phone.addEventListener('change',validationPhone)
+img.addEventListener('change', (e) => { showFile(e) })
+button.addEventListener('click', (event) => validationOnClickCreer(event, 'CREATE'))
+btnEdit.addEventListener('click', (event) => validationOnClickModifier(event, 'EDIT'))
+btnEdit.hidden = true;
+btnAnnuler.hidden = true;
+
+
 function validationPrenom() {
-    nameRegExp = new RegExp('^[a-zA-Z0-9 ]{3,50}$', 'g');
-    testname = nameRegExp.test(prénom.value);
+    let nameRegExp = new RegExp('^[a-zA-Z0-9 ]{3,50}$', 'g');
+    let testname = nameRegExp.test(prénom.value);
     erreur = prénom.nextElementSibling;
     if (testname) {
         erreur.innerHTML = "";
@@ -26,12 +55,9 @@ function validationPrenom() {
     }
 }
 
-//Section nom validationEmail
-let nom = document.querySelector("#nom");
-nom.addEventListener('change', validateName)
 function validateName() {
-    nameRegExp = new RegExp('^[a-zA-Z0-9 ]{3,50}$', 'g');
-    testname = nameRegExp.test(nom.value);
+    let nameRegExp = new RegExp('^[a-zA-Z0-9 ]{3,50}$', 'g');
+    let testname = nameRegExp.test(nom.value);
     erreur = nom.nextElementSibling;
     if (testname) {
         erreur.innerHTML = "";
@@ -52,7 +78,6 @@ function validateName() {
     }
 }
 
-// section telephone
 function checkPhoneExistence() {
     for (let i = 0; i < listContact.length; i++) {
         if (listContact[i].telephone == phone.value) {
@@ -60,11 +85,10 @@ function checkPhoneExistence() {
         }
     } return true;
 }
-let phone = document.querySelector("#phone");
-phone.addEventListener('change', validationPhone);
+
 function validationPhone() {
-    phoneRegExp = new RegExp('^(084|085|080|089|081|082|099|097|090)([0-9]{7})$', 'g');
-    testPhone = phoneRegExp.test(phone.value);
+    let phoneRegExp = new RegExp('^(084|085|080|089|081|082|099|097|090)([0-9]{7})$', 'g');
+    let testPhone = phoneRegExp.test(phone.value);
     erreur = phone.nextElementSibling;
     if (testPhone) {
         erreur.innerHTML = "";
@@ -81,19 +105,15 @@ function validationPhone() {
     }
 }
 
-// section groupe
-let groupe = document.querySelector('#groupe');
-groupe.addEventListener('change', validationGroupe);
 function validationGroupe() {
-    groupRegExp = new RegExp('^[a-zA-Z0-9 ]+$', 'g');
-    testGroupe = groupRegExp.test(groupe.value);
+    let groupRegExp = new RegExp('^[a-zA-Z0-9 ]+$', 'g');
+    let testGroupe = groupRegExp.test(groupe.value);
     if (!testGroupe) {
         confirm("Soyez gentil SVP")
         groupe.value = "";
     }
 }
 
-//Section Email validationEmail
 function checkEmailExistence() {
     for (let i = 0; i < listContact.length; i++) {
         if (listContact[i].Email == email.value) {
@@ -101,12 +121,10 @@ function checkEmailExistence() {
         }
     } return true;
 }
-let email = document.querySelector('#email_checking');
-email.addEventListener('change', validationEmail);
 
 function validationEmail() {
-    emailRegExp = new RegExp('^[a-zA-Z0-9]+[@]{1}[a-zA-Z0-9]+[.]{1}[a-z]{2,10}$', 'g');
-    testEmail = emailRegExp.test(email.value);
+    let emailRegExp = new RegExp('^[a-zA-Z0-9]+[@]{1}[a-zA-Z0-9]+[.]{1}[a-z]{2,10}$', 'g');
+    let testEmail = emailRegExp.test(email.value);
     erreur = email.nextElementSibling;
     if (testEmail) {
         erreur.innerHTML = "";
@@ -119,26 +137,18 @@ function validationEmail() {
     }
 }
 
-// section Bio
-let bio = document.querySelector('#inputBio_height');
-bio.addEventListener('change', validationBio);
 function validationBio() {
-    bioRegExp = new RegExp('^[a-zA-Z0-9 ]+$', 'g');
-    testBio = bioRegExp.test(bio.value);
+    let bioRegExp = new RegExp('^[a-zA-Z0-9 ]+$', 'g');
+    let testBio = bioRegExp.test(bio.value);
     if (!testBio) {
         confirm("Soyez gentil SVP")
         bio.value = "";
     }
 }
 
-// gitsection image 
-let testimg;
-let imgStyle = document.querySelector('#inputImg_height')
-let img = document.querySelector('#image');
 img.style.opacity = 0;
-img.addEventListener('change', imgvalidation);
 function imgvalidation() {
-    imgRegExp = new RegExp('^.+/(jpg|png|jpeg)$', 'g');
+    let imgRegExp = new RegExp('^.+/(jpg|png|jpeg)$', 'g');
     testimg = imgRegExp.test(this.files[0].type);
     let erreur = img.nextElementSibling;
     if (testimg) {
@@ -155,8 +165,6 @@ function imgvalidation() {
     }
 }
 
-let fileUrl;
-img.addEventListener('change', (e) => { showFile(e) })
 function showFile(event) {
     let fileReader = new FileReader();
     fileReader.readAsDataURL(event.target.files[0]);
@@ -166,9 +174,50 @@ function showFile(event) {
     }
 }
 
-// creation de l'objet contact
-let objContact;
-let listContact = [];
+function formvalidation(type) {
+    if (validationPrenom() && validateName() && validationPhone() && validationEmail()) {
+        if (type == 'EDIT')
+            updateContact()
+        else
+            objectaff();
+        return true
+    }
+};
+
+function validationOnClickCreer(event, type) {
+    event.preventDefault();
+    if (!checkEmailExistence()) {
+        erreur = email.nextElementSibling;
+        erreur.innerHTML = 'Cette adresse existe déjà dans la liste de contact.';
+        email.style.border = "2px solid red"
+    } else if (!checkPhoneExistence()) {
+        erreur = phone.nextElementSibling;
+        erreur.innerHTML = 'Ce numéro existe déjà dans la liste de conatct.';
+        phone.style.border = "2px solid red"
+    } else if (formvalidation(type) && imgvalidation.call(img)) {
+        setContacts(listContact)
+        listContact.push(objContact);
+        afficherContacts(event)
+        button.style.backgroundColor = "rgb(8, 128, 214)";
+    } else {
+        confirm(" Vous devez remplir tous les champs pour etre en mesure de crée un contact")
+        button.style.backgroundColor = "rgb(85, 85, 85)";
+    }
+};
+
+function validationOnClickModifier(event, type) {
+    event.preventDefault();
+    if (formvalidation(type) && imgvalidation.call(img)) {
+        listContact.push(objContact);
+        setContacts(listContact)
+        afficherContacts(event)
+        button.style.backgroundColor = "rgb(8, 128, 214)";
+    } else {
+        confirm(" Vous devez remplir tous les champs pour etre en mesure de crée un contact")
+        button.style.backgroundColor = "rgb(85, 85, 85)";
+    }
+};
+
 function objectaff() {
     objContact = {
         prenom: prénom.value,
@@ -182,59 +231,6 @@ function objectaff() {
     return objContact
 }
 
-//********************VERIFICATION DU FORMULAIRE ET VALIDATION DU BOUTON (partie affichage) ****************************** */
-let form = document.querySelector(".contenaire--formulaire--marges")
-let button = document.querySelector("#button_color--blue");
-let btnEdit = document.getElementById('button_color--blue--edit');
-let btnRenit = document.getElementById('button_color--red');
-let btnAnnuler = document.getElementById('button_color--red--edit');
-btnEdit.hidden = true;
-btnAnnuler.hidden = true;
-function formvalidation(type) {
-    if (validationPrenom() && validateName() && validationPhone() && validationEmail()) {
-        if (type == 'EDIT')
-            updateContact()
-        else
-            objectaff();
-        return true
-    }
-};
-
-//Validation des boutons 
-button.addEventListener('click', (event) => validationOnClickCreer(event, 'CREATE'))
-btnEdit.addEventListener('click', (event) => validationOnClickModifier(event, 'EDIT'))
-function validationOnClickCreer(event, type) {
-    event.preventDefault();
-    //Vérification des emails et numéros de téléphone existant sur la liste de contact
-    if (!checkEmailExistence()) {
-        erreur = email.nextElementSibling;
-        erreur.innerHTML = 'Cette adresse existe déjà dans la liste de contact.';
-        email.style.border = "2px solid red"
-    } else if (!checkPhoneExistence()) {
-        erreur = phone.nextElementSibling;
-        erreur.innerHTML = 'Ce numéro existe déjà dans la liste de conatct.';
-        phone.style.border = "2px solid red"
-    } else if (formvalidation(type) && imgvalidation.call(img)) {
-        listContact.push(objContact);
-        afficherContacts(event)
-        button.style.backgroundColor = "rgb(8, 128, 214)";
-    } else {
-        confirm(" Vous devez remplir tous les champs pour etre en mesure de crée un contact")
-        button.style.backgroundColor = "rgb(85, 85, 85)";
-    }
-};
-function validationOnClickModifier(event, type) {
-    event.preventDefault();
-    //Vérification des emails et numéros de téléphone existant sur la liste de contact
-    if (formvalidation(type) && imgvalidation.call(img)) {
-        listContact.push(objContact);
-        afficherContacts(event)
-        button.style.backgroundColor = "rgb(8, 128, 214)";
-    } else {
-        confirm(" Vous devez remplir tous les champs pour etre en mesure de crée un contact")
-        button.style.backgroundColor = "rgb(85, 85, 85)";
-    }
-};
 function afficherContacts() {
     let affichageListe = document.querySelector(".contenaire--liste");
     affichageListe.innerHTML = "";
@@ -245,7 +241,7 @@ function afficherContacts() {
         div.innerHTML =
             `<div class="contenaire--list--space">
     <div id="size_img"><img src="${objContact.image}" alt = "image"/></div>
-    <div>
+    <div id='contenaire--resp'>
         <div id="contenaire--liste--id">
             <p> ${objContact.prenom} </p>
             <p> ${objContact.Nom} </p>
@@ -259,13 +255,11 @@ function afficherContacts() {
         <button id="delet_btn" onclick="suprimeContact(${indexContact})"> <img src="icon/VectorSupp.png" alt="" > </button>
     </div>
 </div>`
-        button.style.backgroundColor = "rgb(8, 128, 214)"
     })
     document.querySelector('form').reset();
-    img.value = null
-    saveData();
+    setContacts(listContact);
 }
-// function de modification
+
 function editContact(indexContact) {
     btnEdit.hidden = false;
     button.hidden = true;
@@ -278,14 +272,15 @@ function editContact(indexContact) {
     email.value = listContact[indexContact].Email;
     bio.value = listContact[indexContact].Bio;
     idEditedContact = indexContact;
-    saveData();
 };
+
 btnAnnuler.onclick = function () {
     btnEdit.hidden = true;
     button.hidden = false;
     btnAnnuler.hidden = true;
     btnRenit.hidden = false;
 }
+
 function updateContact() {
     listContact[idEditedContact].prenom = prénom.value;
     listContact[idEditedContact].Nom = nom.value;
@@ -298,9 +293,9 @@ function updateContact() {
     button.hidden = false;
     btnAnnuler.hidden = true;
     btnRenit.hidden = false;
+    setContacts(listContact)
     afficherContacts();
 }
-// function de supression
 
 function suprimeContact(indexContact) {
     if (confirm("Etes vous sur de vouloir supprimer ce contact ? ")) {
@@ -309,16 +304,11 @@ function suprimeContact(indexContact) {
     }
 }
 
-//Local storage
-const contenaireList=document.querySelector(".contenaire--liste");
-function saveData(){
-    localStorage.setItem("data", contenaireList.innerHTML);
+function setContacts(data) {
+    localStorage.setItem("data", JSON.stringify(data));
 }
-function showContact(){
-    contenaireList.innerHTML=localStorage.getItem("data")
+function getContacts() {
+    // localStorage.clear()
+    let storage = localStorage.getItem("data");
+    return storage ? JSON.parse(storage) : [];
 }
-showContact();
-
-
-
-

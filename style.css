@@ -42,8 +42,8 @@ h2 {
 .scroller {
     height: 965.5px;
     overflow-y: scroll;
-  }
-  
+}
+
 
 .contenaire--formulaire--marges {
     padding: 18px;
@@ -189,63 +189,48 @@ label {
 
 /* responsive */
 
-@media screen and (max-width: 1400px) and (min-width:690px) {
-    /* .contenaire {
-        display: flex;
-        flex-wrap: wrap;
-    }
+@media screen and (max-width: 1400px) {
 
-    .contenaire--formulaire,
-    .contenaire--liste {
-        width: 100%;
-
-    }
-
-    .contenaire--liste {
-        display: flex;
-        justify-content: space-between;
-
-    }
-
-    #contenaire--liste--id {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    #size_img {
-        padding-right: 50px;
-    }
-
-    #width--title {
-        width: 100%;
-    } */
     .contenaire {
         display: flex;
         flex-wrap: wrap;
         margin-inline: 10px;
     }
 
+    h1 {
+        text-align: center;
+    }
+
     .contenaire--formulaire,
     .contenaire--liste {
         width: 100%;
 
     }
+
     .btn {
-        display:flex;
-        
+        display: flex;
+
     }
+
+    .contenaire--list--space {
+        width: 1000px;
+    }
+
     #img--pading {
-        padding-left:0;
+        padding-left: 70px;
+        text-align: center;
+    }
+
+    #contenaire--resp {
+        padding-left: 8%;
     }
 
     .contenaire--liste {
         display: flex;
         flex-wrap: wrap;
     }
-   
 
     #contenaire--liste--bio {
-
         padding-right: 0;
         text-align: justify;
     }
@@ -253,76 +238,26 @@ label {
     #width--title {
         width: 100%;
     }
+
     #size_img img {
         width: 120px;
         height: 120px;
         border-radius: 162px;
     }
-  #mobile_show{
-    padding-left: 50px;
-    padding-block: 5px;
-  }
-  #affichage_Prénom{
-    padding-right: 5px;
-  }
-  #icon {
-    display: flex;
-    padding-left: 15px;
-}
 
+    #mobile_show {
+        padding-left: 50px;
+        padding-block: 5px;
+    }
+
+    #affichage_Prénom {
+        padding-right: 5px;
+    }
 
 }
-
-@media screen and (max-width:690px) {
-    .contenaire {
+@media screen and (max-width: 800px) {
+    #icon {
         display: flex;
-        flex-wrap: wrap;
-        margin-inline: 10px;
+        margin-left: -100%;
     }
-
-    .contenaire--formulaire,
-    .contenaire--liste {
-        width: 100%;
-
-    }
-    .btn {
-        display:flex;
-        
-    }
-    #img--pading {
-        padding-left:0;
-    }
-
-    /* .contenaire--liste {
-        display: flex;
-        flex-wrap: wrap;
-    } */
-   
-
-    #contenaire--liste--bio {
-
-        padding-right: 0;
-        text-align: justify;
-    }
-
-    #width--title {
-        width: 100%;
-    }
-    #size_img img {
-        width: 120px;
-        height: 120px;
-        border-radius: 162px;
-    }
-  #mobile_show{
-    padding-left: 50px;
-    padding-block: 5px;
-  }
-  #affichage_Prénom{
-    padding-right: 5px;
-  }
-  #icon {
-    display: flex;
-    padding-left: 15px;
-}
-   
 }
