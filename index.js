@@ -272,6 +272,7 @@ function afficherContacts() {
     })
     document.querySelector('form').reset();
     img.value = null
+    saveData();
 }
 
 // function de modification
@@ -287,6 +288,7 @@ function editContact(indexContact) {
     email.value = listContact[indexContact].Email;
     bio.value = listContact[indexContact].Bio;
     idEditedContact = indexContact;
+    saveData();
 };
 
 btnAnnuler.onclick = function () {
@@ -320,6 +322,16 @@ function suprimeContact(indexContact) {
         afficherContacts()
     }
 }
+
+//Local storage
+const contenaireList=document.querySelector(".contenaire--liste");
+function saveData(){
+    localStorage.setItem("data", contenaireList.innerHTML);
+}
+function showContact(){
+    contenaireList.innerHTML=localStorage.getItem("data")
+}
+showContact();
 
 
 
