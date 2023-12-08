@@ -53,24 +53,19 @@ function validateName() {
 }
 
 // section telephone
-function checkPhoneExistence(){
+function checkPhoneExistence() {
     for (let i = 0; i < listContact.length; i++) {
         if (listContact[i].telephone == phone.value) {
-          return false;
+            return false;
         }
-      }
-      return true;
-    }
-
+    } return true;
+}
 let phone = document.querySelector("#phone");
 phone.addEventListener('change', validationPhone);
 function validationPhone() {
     phoneRegExp = new RegExp('^(084|085|080|089|081|082|099|097|090)([0-9]{7})$', 'g');
     testPhone = phoneRegExp.test(phone.value);
-
-     erreur = phone.nextElementSibling;
-
-
+    erreur = phone.nextElementSibling;
     if (testPhone) {
         erreur.innerHTML = "";
         phone.style.border = "1px solid rgb(179, 177, 177)";
@@ -90,31 +85,28 @@ function validationPhone() {
 let groupe = document.querySelector('#groupe');
 groupe.addEventListener('change', validationGroupe);
 function validationGroupe() {
-groupRegExp = new RegExp('^[a-zA-Z0-9 ]+$', 'g');
-testGroupe = groupRegExp.test(groupe.value);
-if (!testGroupe) {
-   confirm("Soyez gentil SVP")
-    groupe.value = "";
-}}
+    groupRegExp = new RegExp('^[a-zA-Z0-9 ]+$', 'g');
+    testGroupe = groupRegExp.test(groupe.value);
+    if (!testGroupe) {
+        confirm("Soyez gentil SVP")
+        groupe.value = "";
+    }
+}
 
 //Section Email validationEmail
-
 function checkEmailExistence() {
     for (let i = 0; i < listContact.length; i++) {
-      if (listContact[i].Email == email.value) {
-        return false;
-      }
-    }
-    return true;
-  }
-
+        if (listContact[i].Email == email.value) {
+            return false;
+        }
+    } return true;
+}
 let email = document.querySelector('#email_checking');
 email.addEventListener('change', validationEmail);
 function validationEmail() {
     emailRegExp = new RegExp('^[a-zA-Z0-9]+[@]{1}[a-zA-Z0-9]+[.]{1}[a-z]{2,10}$', 'g');
     testEmail = emailRegExp.test(email.value);
     erreur = email.nextElementSibling;
-
     if (testEmail) {
         erreur.innerHTML = "";
         email.style.border = "1px solid rgb(179, 177, 177)"
@@ -130,12 +122,13 @@ function validationEmail() {
 let bio = document.querySelector('#inputBio_height');
 bio.addEventListener('change', validationBio);
 function validationBio() {
-bioRegExp = new RegExp('^[a-zA-Z0-9 ]+$', 'g');
-testBio = bioRegExp.test(bio.value);
-if (!testBio) {
-   confirm("Soyez gentil SVP")
-    bio.value = "";
-}}
+    bioRegExp = new RegExp('^[a-zA-Z0-9 ]+$', 'g');
+    testBio = bioRegExp.test(bio.value);
+    if (!testBio) {
+        confirm("Soyez gentil SVP")
+        bio.value = "";
+    }
+}
 
 // gitsection image 
 let testimg;
@@ -173,7 +166,7 @@ function showFile(event) {
 }
 
 // creation de l'objet contact
-let objContact
+let objContact;
 let listContact = [];
 function objectaff() {
     objContact = {
@@ -188,8 +181,7 @@ function objectaff() {
     return objContact
 }
 
-//********************VERIFICATION DU FORMULAIRE ET VALIDATION DU BOUTON****************************** */
-
+//********************VERIFICATION DU FORMULAIRE ET VALIDATION DU BOUTON (partie affichage) ****************************** */
 let form = document.querySelector(".contenaire--formulaire--marges")
 let button = document.querySelector("#button_color--blue");
 let btnEdit = document.getElementById('button_color--blue--edit');
@@ -197,12 +189,8 @@ let btnRenit = document.getElementById('button_color--red');
 let btnAnnuler = document.getElementById('button_color--red--edit');
 btnEdit.hidden = true;
 btnAnnuler.hidden = true;
-//Vérification du formulaire : la fonction gère les couleurs du bouton creer en fonction de la validité des champs du formulaire (A NE PAS MODIFIER)
-
-
 function formvalidation(type) {
     if (validationPrenom() && validateName() && validationPhone() && validationEmail()) {
-
         if (type == 'EDIT')
             updateContact()
         else
@@ -214,56 +202,42 @@ function formvalidation(type) {
 //Validation des boutons 
 button.addEventListener('click', (event) => validationOnClickCreer(event, 'CREATE'))
 btnEdit.addEventListener('click', (event) => validationOnClickModifier(event, 'EDIT'))
-
-
-
 function validationOnClickCreer(event, type) {
     event.preventDefault();
-   
-//Vérification des emails et numéros de téléphone existant sur la liste de contact
-
-    if(!checkEmailExistence()){ 
+    //Vérification des emails et numéros de téléphone existant sur la liste de contact
+    if (!checkEmailExistence()) {
         erreur = email.nextElementSibling;
         erreur.innerHTML = 'Cette adresse existe déjà dans la liste de contact.';
-        email.style.border = "2px solid red"   
-    }
-
-    else if (!checkPhoneExistence()){
+        email.style.border = "2px solid red"
+    } else if (!checkPhoneExistence()) {
         erreur = phone.nextElementSibling;
         erreur.innerHTML = 'Ce numéro existe déjà dans la liste de conatct.';
         phone.style.border = "2px solid red"
-    }
-    else if (formvalidation(type) && imgvalidation.call(img)) {
+    } else if (formvalidation(type) && imgvalidation.call(img)) {
         listContact.push(objContact);
         afficherContacts(event)
         button.style.backgroundColor = "rgb(8, 128, 214)";
-    }   
-    else {
+    } else {
         confirm(" Vous devez remplir tous les champs pour etre en mesure de crée un contact")
         button.style.backgroundColor = "rgb(85, 85, 85)";
     }
 };
-
 function validationOnClickModifier(event, type) {
     event.preventDefault();
-   
-//Vérification des emails et numéros de téléphone existant sur la liste de contact
-if (formvalidation(type) && imgvalidation.call(img)) {
+    //Vérification des emails et numéros de téléphone existant sur la liste de contact
+    if (formvalidation(type) && imgvalidation.call(img)) {
         listContact.push(objContact);
         afficherContacts(event)
         button.style.backgroundColor = "rgb(8, 128, 214)";
-    }   
-    else {
+    } else {
         confirm(" Vous devez remplir tous les champs pour etre en mesure de crée un contact")
         button.style.backgroundColor = "rgb(85, 85, 85)";
     }
 };
-
 function afficherContacts() {
     let affichageListe = document.querySelector(".contenaire--liste");
     affichageListe.innerHTML = "";
     listContact.forEach((objContact, indexContact) => {
-
         const div = document.createElement("div");
         affichageListe.appendChild(div);
         div.classList.add('contenaire--liste');
@@ -289,7 +263,6 @@ function afficherContacts() {
     document.querySelector('form').reset();
     img.value = null
 }
-
 // function de modification
 function editContact(indexContact) {
     btnEdit.hidden = false;
@@ -304,15 +277,12 @@ function editContact(indexContact) {
     bio.value = listContact[indexContact].Bio;
     idEditedContact = indexContact;
 };
-
 btnAnnuler.onclick = function () {
     btnEdit.hidden = true;
     button.hidden = false;
     btnAnnuler.hidden = true;
     btnRenit.hidden = false;
 }
-// function de modification
-
 function updateContact() {
     listContact[idEditedContact].prenom = prénom.value;
     listContact[idEditedContact].Nom = nom.value;
@@ -327,7 +297,6 @@ function updateContact() {
     btnRenit.hidden = false;
     afficherContacts();
 }
-
 // function de supression
 
 function suprimeContact(indexContact) {
