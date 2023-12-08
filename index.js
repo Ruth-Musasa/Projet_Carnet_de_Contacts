@@ -75,6 +75,14 @@ function validationPhone() {
 
 // section groupe
 let groupe = document.querySelector('#groupe');
+groupe.addEventListener('change', validationGroupe);
+function validationGroupe() {
+groupRegExp = new RegExp('^[\<]+$', 'g');
+testGroupe = groupRegExp.test(groupe.value);
+if (!testGroupe) {
+   confirm("Soyez gentil SVP")
+    groupe.value = "";
+}}
 
 //Section Email validationEmail
 let email = document.querySelector('#email_checking');
@@ -96,6 +104,15 @@ function validationEmail() {
 
 // section Bio
 let bio = document.querySelector('#inputBio_height');
+bio.addEventListener('change', validationBio);
+function validationBio() {
+bioRegExp = new RegExp('^[\<]+$', 'g');
+testBio = groupRegExp.test(bio.value);
+console.log(testBio);
+if (!testBio) {
+   confirm("Soyez gentil SVP")
+    Bio.value = "";
+}}
 
 // gitsection image 
 let testimg;
