@@ -40,7 +40,7 @@ h2 {
 }
 
 .scroller {
-    height: 965.5px;
+    height: 970px;
     overflow-y: scroll;
 }
 
@@ -93,7 +93,6 @@ label {
 }
 
 #img--pading {
-    padding-inline: 160px;
     padding-top: 40px;
     padding-bottom: 50px;
 }
@@ -189,7 +188,7 @@ label {
 
 /* responsive */
 
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 1450px) {
 
     .contenaire {
         display: flex;
@@ -213,12 +212,7 @@ label {
     }
 
     .contenaire--list--space {
-        width: 1000px;
-    }
-
-    #img--pading {
-        padding-left: 70px;
-        text-align: center;
+        width: 1450px;
     }
 
     #contenaire--resp {
@@ -233,10 +227,6 @@ label {
     #contenaire--liste--bio {
         padding-right: 0;
         text-align: justify;
-    }
-
-    #width--title {
-        width: 100%;
     }
 
     #size_img img {
@@ -255,6 +245,7 @@ label {
     }
 
 }
+
 @media screen and (max-width: 800px) {
     #icon {
         display: flex;
