@@ -138,6 +138,7 @@ label {
     color: #555555;
     line-height: 4;
     display: flex;
+    overflow-wrap: break-word;
 }
 
 #icon {
@@ -170,6 +171,7 @@ label {
     line-height: 1.5;
     padding-right: 15px;
     text-align: justify;
+    overflow-wrap: break-word;
 }
 
 .contenaire--list--space {
@@ -228,6 +230,8 @@ label {
     #contenaire--liste--bio {
         padding-right: 0;
         text-align: justify;
+        overflow-wrap: break-word;
+        width: 600px
     }
 
     #size_img img {
@@ -247,9 +251,12 @@ label {
 
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
     #icon {
         display: flex;
         margin-left: -100%;
+    }
+    #contenaire--liste--bio {
+        width: 300px
     }
 }

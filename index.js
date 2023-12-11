@@ -289,6 +289,7 @@ btnAnnuler.onclick = function () {
     button.hidden = false;
     btnAnnuler.hidden = true;
     btnRenit.hidden = false;
+    document.querySelector('form').reset();
 }
 
 function updateContact() {
