@@ -323,3 +323,4 @@ function getContacts() {
     let storage = localStorage.getItem("data");
     return storage ? JSON.parse(storage) : [];
 }
+
