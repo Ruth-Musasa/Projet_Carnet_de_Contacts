@@ -1,4 +1,5 @@
 let idEditedContact = null;
+let form = document.querySelectorAll('input');
 let erreur;
 let nom = document.querySelector("#nom");
 let prénom = document.querySelector("#nameInpute");
@@ -16,6 +17,7 @@ let button = document.querySelector("#button_color--blue");
 let btnEdit = document.getElementById('button_color--blue--edit');
 let btnRenit = document.getElementById('button_color--red');
 let btnAnnuler = document.getElementById('button_color--red--edit');
+let btnrenit = document.querySelector('#button_color--red');
 
 
 groupe.addEventListener('change', validationGroupe);
@@ -24,8 +26,9 @@ email.addEventListener('change', validationEmail);
 prénom.addEventListener('change', validationPrenom)
 nom.addEventListener('change', validateName)
 img.addEventListener('change', imgvalidation);
-phone.addEventListener('change',validationPhone)
+phone.addEventListener('change', validationPhone)
 img.addEventListener('change', (e) => { showFile(e) })
+btnrenit.addEventListener('click', renit)
 button.addEventListener('click', (event) => validationOnClickCreer(event, 'CREATE'))
 btnEdit.addEventListener('click', (event) => validationOnClickModifier(event, 'EDIT'))
 btnEdit.hidden = true;
@@ -106,9 +109,9 @@ function validationPhone() {
 }
 
 function validationGroupe() {
-    let groupRegExp = new RegExp('^[a-zA-Z0-9 ]+$', 'g');
+    let groupRegExp = new RegExp('[(\<)+(\=)+]', 'g');
     let testGroupe = groupRegExp.test(groupe.value);
-    if (!testGroupe) {
+    if (testGroupe) {
         confirm("Soyez gentil SVP")
         groupe.value = "";
     }
@@ -128,7 +131,7 @@ function validationEmail() {
     erreur = email.nextElementSibling;
     if (testEmail) {
         erreur.innerHTML = "";
-        email.style.border = "1px solid rgb(179, 177, 177)"
+        email.style.border = "1px solid rgb(179, 177, 177)";
         return true;
     } else {
         erreur.innerHTML = 'Veuillez saisir une adresse E-mail correcte'
@@ -138,9 +141,9 @@ function validationEmail() {
 }
 
 function validationBio() {
-    let bioRegExp = new RegExp('^[a-zA-Z0-9 ]+$', 'g');
+    let bioRegExp = new RegExp('[(\<)+(\=)+]', 'g');
     let testBio = bioRegExp.test(bio.value);
-    if (!testBio) {
+    if (testBio) {
         confirm("Soyez gentil SVP")
         bio.value = "";
     }
@@ -218,6 +221,12 @@ function validationOnClickModifier(event, type) {
     }
 };
 
+function renit() {
+    document.querySelector('form').reset();
+    erreur.innerHTML = "";
+    form.style.border = "1px solid rgb(179, 177, 177)";
+};
+
 function objectaff() {
     objContact = {
         prenom: prénom.value,
@@ -229,7 +238,7 @@ function objectaff() {
         image: fileUrl,
     }
     return objContact
-}
+};
 
 function afficherContacts() {
     let affichageListe = document.querySelector(".contenaire--liste");
@@ -258,7 +267,7 @@ function afficherContacts() {
     })
     document.querySelector('form').reset();
     setContacts(listContact);
-}
+};
 
 function editContact(indexContact) {
     btnEdit.hidden = false;
@@ -271,6 +280,7 @@ function editContact(indexContact) {
     groupe.value = listContact[indexContact].Groupe;
     email.value = listContact[indexContact].Email;
     bio.value = listContact[indexContact].Bio;
+    fileUrl = listContact[indexContact].image;
     idEditedContact = indexContact;
 };
 
