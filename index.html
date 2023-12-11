@@ -1,30 +1,75 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <link href="style.css" rel="stylesheet" type="text/css" />
-  <title>Carnet de contacts</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz@6..96&family=Mea+Culpa&family=Poppins&display=swap"
-      rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carnet de contacts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz@6..96&family=Mea+Culpa&family=Poppins&display=swap"
+        rel="stylesheet">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
- 
-  <script src="script.js"></script>
+    <h1>Répertoire des contacts</h1>
+    <section class="contenaire">
+        <div class="contenaire--formulaire">
+            <h2>Formulaire de contact</h2>
+            <form class="contenaire--formulaire--marges" name="contact" enctype="multipart/form-data" method="post">
+                <label>Prénom </label>
+                <div id="name">
+                    <input type="text" id="nameInpute" class="adding">
+                    <p class="error_message"></p>
+                </div>
 
- <!--
-  This script places a badge on your repl's full-browser view back to your repl's cover
-  page. Try various colors for the theme: dark, light, red, orange, yellow, lime, green,
-  teal, blue, blurple, magenta, pink!
-  -->
-  <script src="https://replit.com/public/js/replit-badge.js" theme="blue" defer></script> 
+                <label>Nom </label>
+
+                <div id="name">
+                    <input type="text" id="nom" class="adding">
+                    <p class="error_message"></p>
+                </div>
+                <label>Télephone </label>
+                <div id="phone--cont">
+                    <input id="phone" type="tel" name="phone" class="erreur adding" />
+                    <p class="error_message "></p>
+                </div>
+
+                <label>Groupe </label>
+                <input type="text" id="groupe" class="adding">
+
+                <label>Email </label>
+                <input id="email_checking" type="email" class="adding">
+                <p class="error_message"></p>
+
+                <label>Bio </label>
+                <textarea id="inputBio_height" class="adding" rows="5" cols="33" ></textarea>
+                <div id="inputImg_height">
+                    <div class="marge--img">
+                        <label for="image" id="img--pading"> Déposer la photo</label>
+                        <p>ici</p>
+                        <input type="file" id="image" name="img" class="adding" />
+                        <p class="error_message"></p>
+                    </div>
+                </div>
+                <input id="button_color--blue" type="button" value="Créer" />
+                <input id="button_color--blue--edit" type="button" value="Modifier" />
+                <input id="button_color--red" type="button" value="Rénit" />
+                <input id="button_color--red--edit" type="button" value="Annuler" />
+            </form>
+        </div>
+        <div class="scroller">
+            <h2 id="width--title">Liste de contacts</h2>
+            <div class="contenaire--liste ">
+
+            </div>
+    </section>
+    <script src="index.js"></script>
 </body>
 
 </html>

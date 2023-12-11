@@ -1,1 +1,260 @@
 
+* {
+    border-style: none;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* formulaire contacts */
+
+h1,
+h2 {
+    color: white;
+    background-color: #0880D6;
+    padding: 15px;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+
+}
+
+h2 {
+    text-align: center;
+}
+
+.contenaire {
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: 40% 60%;
+    margin-inline: 70px;
+    margin-top: 15px;
+    margin-bottom: 70px;
+}
+
+.contenaire--formulaire,
+.contenaire--liste {
+    border: 1px #C4C4C4 solid;
+}
+
+.scroller {
+    height: 970px;
+    overflow-y: scroll;
+}
+
+
+.contenaire--formulaire--marges {
+    padding: 18px;
+
+}
+
+label {
+    color: #0880D6;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    line-height: 3;
+}
+
+.contenaire--formulaire--marges input {
+    color: black;
+    width: 100%;
+    height: 45px;
+    border: 1px #C4C4C4 solid;
+}
+
+#inputBio_height {
+    color: black;
+    width: 100%;
+    height: 115px;
+    border: 1px #C4C4C4 solid;
+}
+
+#inputImg_height {
+    border: 2px #C4C4C4 dashed;
+    height: 115px;
+    margin-block: 15px;
+    text-align: center;
+    color: #555555;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+#inputImg_height label {
+    color: #555555;
+    text-align: center;
+    line-height: 1;
+}
+
+.marge--img {
+    padding-top: 20px;
+}
+
+#img--pading {
+    padding-top: 40px;
+    padding-bottom: 50px;
+}
+
+#button_color--blue,
+#button_color--red,
+#button_color--blue--edit,
+#button_color--red--edit {
+    height: 44px;
+    width: 135px;
+    padding: 10px 45px 10px 45px;
+    color: #fff;
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 30px;
+}
+
+#button_color--blue,
+#button_color--blue--edit {
+    background-color: rgb(8, 128, 214);
+    margin-top: 20px;
+}
+
+#button_color--red,
+#button_color--red--edit {
+    background-color: #FF3838;
+    margin-left: 30px;
+    margin-top: 20px;
+}
+
+
+/* liste de contacts */
+#size_img img {
+    width: 162px;
+    height: 162px;
+    border-radius: 162px;
+}
+
+#contenaire--liste--id {
+    font-size: 16px;
+    font-weight: 500;
+    color: #555555;
+    line-height: 4;
+    display: flex;
+    overflow-wrap: break-word;
+}
+
+#icon {
+    display: flex;
+}
+
+#icon div {
+    padding-right: 20px;
+}
+
+#edit_btn,
+#delet_btn {
+    background-color: #fff;
+    padding-bottom: 100px;
+}
+
+#contenaire--liste--num {
+    font-size: 14px;
+    font-weight: 400;
+    color: #555555;
+    line-height: 3;
+}
+
+#contenaire--liste--bio {
+    font-size: 12px;
+    font-weight: 400;
+    color: rgb(85, 85, 85);
+    line-height: 1.5;
+    padding-right: 15px;
+    text-align: justify;
+    overflow-wrap: break-word;
+}
+
+.contenaire--list--space {
+    display: grid;
+    grid-template-columns: 20% 70% 10%;
+    padding: 15px;
+    grid-gap: 20px;
+}
+
+/*message d'erreur email*/
+.error_message {
+    color: red;
+    font-style: italic;
+    text-align: left;
+}
+
+
+/* responsive */
+
+@media screen and (max-width: 1450px) {
+
+    .contenaire {
+        display: flex;
+        flex-wrap: wrap;
+        margin-inline: 10px;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    .contenaire--formulaire,
+    .contenaire--liste {
+        width: 100%;
+
+    }
+
+    .btn {
+        display: flex;
+
+    }
+
+    .contenaire--list--space {
+        width: 1450px;
+    }
+
+    #contenaire--resp {
+        padding-left: 8%;
+    }
+
+    .contenaire--liste {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #contenaire--liste--bio {
+        padding-right: 0;
+        text-align: justify;
+        overflow-wrap: break-word;
+        width: 600px
+    }
+
+    #size_img img {
+        width: 120px;
+        height: 120px;
+        border-radius: 162px;
+    }
+
+    #mobile_show {
+        padding-left: 50px;
+        padding-block: 5px;
+    }
+
+    #affichage_Prénom {
+        padding-right: 5px;
+    }
+
+}
+
+@media screen and (max-width: 900px) {
+    #icon {
+        display: flex;
+        margin-left: -100%;
+    }
+    #contenaire--liste--bio {
+        width: 300px
+    }
+}
